@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	<!-- 标记不由spring处理的静态资源 -->
+	 <mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources location="/uploads/" mapping="/uploads/**" />
+	<!-- Use @MVC annotations -->
+	<mvc:annotation-driven />
+	<!-- <mvc:default-servlet-handler/> 
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"></bean -->
+
+	<!-- User @Controller, @Service... annotations -->
+	<!-- 本配置文件只处理表现层，扫描control层注解，使其生效。
+	     注意不要同时扫描数据层，否则会导致事物无法启用 -->
+	 <context:component-scan base-package="com.gxufe.smarcampus.controllers" /> 
+
+	<!-- Thymeleaf template engine -->
+	 <!-- <bean id="templateResolver"
+		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML5" />
+		<property name="characterEncoding" value="UTF-8" />
+		<property name="cacheable" value="false" />
+	</bean>
+
+	 <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+		<property name="additionalDialects">
+			<set>
+				<bean
+					class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect" />
+			</set>
+		</property>
+	</bean>
+
+	<bean id="viewResolver" class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
+		<property name="characterEncoding" value="UTF-8" />
+	</bean>  -->
+	
+	<!-- FreeMarkerConfigurer -->
+	  <bean
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/views/" />
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="base" value="#{servletContext.contextPath}" />
+			</map>
+		</property>
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="defaultEncoding">UTF-8</prop>
+				<prop key="classic_compatible">true</prop>
+				<prop key="template_update_delay">0</prop>
+				<prop key="number_format">#.##</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.freemarker.FreeMarkerView"
+		p:suffix=".ftl" p:contentType="text/html; charset=UTF-8"
+		p:allowSessionOverride="true" />  
+		
+		 <!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
+    <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/views/" p:suffix=".jsp" /> -->
+	
+	<!-- 引入spring multipart插件，使spring支持文件上传 -->
+	<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<!-- 设置文件上传最大的大小，单位字节 -->
+    	<property name="maxUploadSize" value="5000000"/>
+	</bean>
+</beans>

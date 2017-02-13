@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+		
+	<bean id="hibernateDaoSupport"  
+        class="org.springframework.orm.hibernate3.support.HibernateDaoSupport"  
+        abstract="true">  
+        <property name="hibernateTemplate" ref="hibernateTemplate" />  
+    </bean>  
+    
+	<bean id="hibernateTemplate"  
+        class="org.springframework.orm.hibernate3.HibernateTemplate" >  
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>  
+		
+	<!-- 扫描不包含control层的包，使其中的spring注解生效 -->
+	<!-- 与control层的扫描必须分开，否则Transaction无法生效 -->
+	 <context:component-scan base-package="com.gxufe.smarcampus.repository" /> 
+	
+	<!-- 定义C3P0数据源连接池 -->
+	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		在连接url后面增加character设置，防止中文乱码
+		<property name="jdbcUrl">
+			<value>jdbc:mysql://localhost:3306/smartcampus?useUnicode=true&amp;characterEncoding=utf-8</value>
+		</property>
+		<property name="user">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>10</value>
+		</property>
+		<property name="minPoolSize">
+			<value>5</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>30</value>
+		</property>
+		<property name="acquireIncrement">
+			<value>5</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>10</value>
+		</property>
+		<property name="maxStatements">
+			<value>0</value>
+		</property>
+	</bean> -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> 
+              <property name="driverClassName"> 
+                     <value>com.mysql.jdbc.Driver</value> 
+              </property> 
+              <property name="url"> 
+                     <value>jdbc:mysql://localhost:3306/smartcampus?useUnicode=true&amp;characterEncoding=utf-8</value> 
+              </property> 
+              <property name="username"> 
+                     <value>root</value> 
+              </property> 
+              <property name="password"> 
+                     <value>root</value> 
+              </property> 
+              <property name="maxActive"> 
+                     <value>255</value> 
+              </property> 
+              <property name="maxIdle"> 
+                     <value>2</value> 
+              </property> 
+              <property name="maxWait"> 
+                     <value>120000</value> 
+              </property> 
+       </bean> 
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.gxufe.smarcampus.models</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<!-- Hibernate方言  -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<!-- Hibernate是否在控制台输出SQL语句  -->
+				<prop key="show_sql">true</prop>
+				<!-- 定义Hibernate一次提交的SQL语句数目 -->
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+				<!-- Fetch Size 是设定JDBC的Statement读取数据的时候每次从数据库中取出的记录条数，一般设置为30、50、100。
+					Oracle数据库的JDBC驱动默认的Fetch Size=15，设置Fetch Size设置为：30、50，性能会有明显提升，如果继续增大， 超出100，性能提升不明显，反而会消耗内存。 -->
+				<prop key="hibernate.jdbc.fatch_size">50</prop>
+				<!-- 自动根据model对象来更新表结构，启动hibernate时会自动检查数据库，如果缺少表，则自动建表；如果表里缺少列，则自动添加列。 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- 解决中文乱码问题，要求mysql数据库charset为utf-8 -->
+				<prop key="connection.useUnicode">true</prop>
+				<prop key="connection.characterEncoding">utf-8</prop>
+				<!-- spring集成配置 -->				
+				<prop key="hibernate.current_session_context_class">
+					org.springframework.orm.hibernate3.SpringSessionContext
+				</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 定义事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 配置AOP，Spring是通过AOP来进行事务管理的 -->
+     <aop:config>
+        <!-- 设置pointCut表示哪些方法要加入事务处理
+        以下的事务是声明在DAO中，但是通常都会在Service来处理多个业务对象逻辑的关系，注入删除，更新等，此时如果在执行了一个步骤之后抛出异常 
+            就会导致数据不完整，所以事务不应该在DAO层处理，而应该在service，这也就是Spring所提供的一个非常方便的工具，声明式事务 -->
+        <aop:pointcut id="allMethods" expression="execution(* com.gxufe.smarcampus.service.*.*(..))" />
+       <!--  通过advisor来确定具体要加入事务控制的方法 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="allMethods" />
+    </aop:config>
+  <!--   配置哪些方法要加入事务控制 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!-- 让所有的方法都加入事务管理，为了提高效率，可以把一些查询之类的方法设置为只读的事务 -->
+            <tx:method name="*" propagation="REQUIRED" read-only="true" />
+           <!--  以下方法都是可能设计修改的方法，就无法设置为只读 -->
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="del*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="save*" propagation="REQUIRED" />
+        </tx:attributes>
+    </tx:advice> 
+	
+	<!-- 使@Transaction生效 -->
+	 <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>  
+ <context:annotation-config />
+</beans>

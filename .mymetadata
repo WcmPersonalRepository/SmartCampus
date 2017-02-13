@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SmartCampus"
+  id="myeclipse.1486542628732"
+  context-root="/SmartCampus"
+  j2ee-spec="1.7"
+  archive="SmartCampus.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
