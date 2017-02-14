@@ -48,7 +48,7 @@ public class SysUsersRoles implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "USER_ID", nullable = false)
 	public SysUsers getSysUsers() {
 		return this.sysUsers;
@@ -58,7 +58,7 @@ public class SysUsersRoles implements java.io.Serializable {
 		this.sysUsers = sysUsers;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "ROLE_ID", nullable = false)
 	public SysRoles getSysRoles() {
 		return this.sysRoles;

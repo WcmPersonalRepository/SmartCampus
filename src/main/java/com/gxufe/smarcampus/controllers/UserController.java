@@ -27,7 +27,7 @@ public class UserController {
 	@Autowired
 	private SysUsersService sysUsersService;
 	
-	@RequestMapping("/login")
+	@RequestMapping("/index")
 	public String login(HttpServletRequest request ,Model model){
 		//Users user=new Users();
 		/*user.setUserAge(23);

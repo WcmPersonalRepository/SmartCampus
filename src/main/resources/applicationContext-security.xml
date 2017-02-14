@@ -45,7 +45,7 @@
 	<!-- 资源目录不需要授权访问 -->
 	<http pattern="/resources/**" security="none"/>
 	
-	<http use-expressions="true">
+	<http use-expressions="true" auto-config="true">
 		<!-- Login pages -->
 		<form-login 
 			login-page="/login" authentication-failure-url="/login?loginError=1" 
@@ -57,11 +57,11 @@
 
 		<!-- Security zones -->
 		<!-- /user目录下必须是授权用户 -->
-		<intercept-url pattern="/login" access="permitAll"/>
+		 <intercept-url pattern="/login" access="permitAll"/> 
 		<intercept-url pattern="/anony/**" access="permitAll"/>
-		<intercept-url pattern="/manager/**" access="hasRole('ROLE_HR')"/>
+		<intercept-url pattern="/manager/**" access="hasRole('ROLE_SC')"/>
 		<intercept-url pattern="/system/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/uploads/**" access="hasAnyRole('ROLE_HR','ROLE_ADMIN')"/>
+		<intercept-url pattern="/uploads/**" access="hasAnyRole('ROLE_SC','ROLE_ADMIN')"/>
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 
 		<!-- CSRF -->

@@ -1,5 +1,10 @@
 package com.gxufe.smarcampus.security.client;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import sun.misc.BASE64Encoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -7,13 +12,20 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.gxufe.smarcampus.common.mapper.BeanMapper;
+import com.gxufe.smarcampus.common.util.PasswordEncoderFactoryBean;
 import com.gxufe.smarcampus.models.SysRoles;
 import com.gxufe.smarcampus.models.SysUsers;
 import com.gxufe.smarcampus.models.SysUsersRoles;
@@ -37,7 +49,15 @@ public class DefaultUserDetailsService implements UserDetailsService {
 			throws UsernameNotFoundException {
 		logger.debug("username : {}", username);
         try {
-        	SysUsers sysUsers=(SysUsers) sysUsersDao.find("from SysUsers as user where user.username=?",username);
+        	 List<GrantedAuthority> authsList = new ArrayList<GrantedAuthority>();
+        	 authsList.add(new GrantedAuthorityImpl("ROLE_SC"));
+        	// Collection<GrantedAuthority> authoritise=new GrantedAuthority[authsList.size()];
+        	 User userdetail = new User(username, "ZwsUcorZkCrsujLiL6T2vQ==", true, true, true, true, authsList);
+        	/*List<SysUsers> sysUsersList=sysUsersDao.find("from SysUsers as user where user.username=?",username);
+        	SysUsers sysUsers=null;
+        	if (sysUsersList.size()>0) {
+        		sysUsers=sysUsersList.get(0);
+			}
         	UserAuthDTO userAuthDto = null;
         	List<String> roleNames=new ArrayList<>();
         	Collection<SysRoles> authorities=new ArrayList<SysRoles>();
@@ -47,6 +67,7 @@ public class DefaultUserDetailsService implements UserDetailsService {
         			roleNames.add(set.getSysRoles().getRoleName());
         			authorities.add(set.getSysRoles());
 				}
+        		userAuthDto=new UserAuthDTO();
         		userAuthDto.setId(sysUsers.getUserId().toString());
         		userAuthDto.setPassword(sysUsers.getPassword());
         		userAuthDto.setRoles(roleNames);
@@ -55,13 +76,15 @@ public class DefaultUserDetailsService implements UserDetailsService {
 
             SpringSecurityUserAuth userAuthResult = new SpringSecurityUserAuth();
             userAuthResult.setAuthorities(authorities);
-            beanMapper.copy(userAuthDto, userAuthResult);
+            if (userAuthDto!=null) {
+            	beanMapper.copy(userAuthDto, userAuthResult);
+			}
 
             if (defaultPassword != null) {
                 userAuthResult.setPassword(defaultPassword);
-            }
+            }*/
 
-            return userAuthResult;
+            return userdetail;
         } catch (Exception ex) {
             logger.error(ex.getMessage(), ex);
             throw new UsernameNotFoundException(username, ex);
@@ -77,6 +100,14 @@ public class DefaultUserDetailsService implements UserDetailsService {
 		this.defaultPassword = defaultPassword;
 	}
 	
+	public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		//确定计算方法
+	 MessageDigest md5=MessageDigest.getInstance("MD5");
+	BASE64Encoder base64en = new BASE64Encoder();
+	String str="000000";
+	//String newstr=base64en.encode(md5.digest(str.getBytes("utf-8")));
 	
+	//System.out.println(newstr);
+	}
 
 }

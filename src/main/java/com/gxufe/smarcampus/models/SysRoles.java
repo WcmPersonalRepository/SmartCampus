@@ -138,7 +138,7 @@ public class SysRoles implements java.io.Serializable,GrantedAuthority {
 		this.sysRolesMoudleses = sysRolesMoudleses;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysRoles")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysRoles")
 	public Set<SysRolesAuthorities> getSysRolesAuthoritieses() {
 		return this.sysRolesAuthoritieses;
 	}
@@ -153,5 +153,11 @@ public class SysRoles implements java.io.Serializable,GrantedAuthority {
 		// TODO Auto-generated method stub
 		return roleName;
 	}
+
+	public void setAuthority(String authority) {
+		this.roleName = roleName;
+	}
+	
+	
 
 }

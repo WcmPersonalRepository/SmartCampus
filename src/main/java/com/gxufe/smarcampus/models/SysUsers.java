@@ -226,7 +226,7 @@ public class SysUsers implements java.io.Serializable {
 		this.credentialsNonExpired = credentialsNonExpired;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysUsers")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysUsers")
 	public Set<SysUsersRoles> getSysUsersRoleses() {
 		return this.sysUsersRoleses;
 	}
