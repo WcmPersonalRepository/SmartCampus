@@ -100,7 +100,7 @@ public class DefaultUserDetailsService implements UserDetailsService {
 		this.defaultPassword = defaultPassword;
 	}
 	
-	public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	/*public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		//确定计算方法
 	 MessageDigest md5=MessageDigest.getInstance("MD5");
 	BASE64Encoder base64en = new BASE64Encoder();
@@ -108,6 +108,6 @@ public class DefaultUserDetailsService implements UserDetailsService {
 	//String newstr=base64en.encode(md5.digest(str.getBytes("utf-8")));
 	
 	//System.out.println(newstr);
-	}
+	}*/
 
 }
