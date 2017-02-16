@@ -9,7 +9,7 @@
       <span class="icon icon-left"></span>
       返回
     </a> -->
-    <h1 class="title title-color">广西财经学院</h1>
+    <h1 class="title title-color">教务网络管理系统</h1>
   </header>
   
   <div class="content">

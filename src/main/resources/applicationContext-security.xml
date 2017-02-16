@@ -57,14 +57,15 @@
 		<!-- Security zones -->
 		<!-- /user目录下必须是授权用户 -->
 		<!-- permitAll和none是有区别的，permitAll指所有登录和未登录人员都可以访问，这个设置是需要经过security filter的，而none也指所有人员都可以访问，但不会经过sec filter-->
-		 <intercept-url pattern="/login" access="permitAll"/> 
+		 <!-- <intercept-url pattern="/login" access="permitAll"/> 
 		 <intercept-url pattern="/user/**" access="hasRole('ROLE_SC')"/> 
 		<intercept-url pattern="/anony/**" access="permitAll"/>
 		<intercept-url pattern="/manager/**" access="hasRole('ROLE_SC')"/>
 		<intercept-url pattern="/system/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/uploads/**" access="hasAnyRole('ROLE_SC','ROLE_ADMIN')"/>
+		<intercept-url pattern="/uploads/**" access="hasAnyRole('ROLE_SC','ROLE_ADMIN')"/> -->
 		<!-- 只有拥有权限的人才能访问  -->
-		<intercept-url pattern="/**" access="isAuthenticated()" />
+		<!-- <intercept-url pattern="/**" access="isAuthenticated()" /> -->
+		<intercept-url pattern="/**" access="permitAll" />
 
 		<!-- CSRF -->
 <!-- 		<csrf /> -->

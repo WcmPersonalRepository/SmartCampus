@@ -21,6 +21,8 @@ public class OtherController {
 		System.out.println(SpringSecurityUtils.getCurrentUserId()+"************");
 		System.out.println(SpringSecurityUtils.getCurrentUserIp()+"************");
 		System.out.println(SpringSecurityUtils.getRoles()+"************");*/
+		String itemNum=request.getParameter("itemNum");
+		model.addAttribute("itemNum",itemNum);
 		return "index";
 	}
 	@RequestMapping("login")
