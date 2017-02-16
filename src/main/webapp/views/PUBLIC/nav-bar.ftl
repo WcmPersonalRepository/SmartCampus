@@ -3,7 +3,7 @@
       <span class="icon icon-home"></span>
       <span class="tab-label">菜园</span>
     </a>
-    <a class="tab-item" href="${base}/educationalManger?itemNum=1">
+    <a class="tab-item" href="${base}/educationalManager?itemNum=1">
       <span class="icon icon-browser"></span>
       <span class="tab-label">管理</span>
     </a>
@@ -25,6 +25,10 @@
 			if ("${itemNum}"=="") {
 				$(items[0]).addClass("active");
 			}else{
+				for ( var i = 0; i < items.length; i++) {
+					var $tabItem=$(items[i]);
+					$tabItem.removeClass("active");
+				}
 				for ( var i = 0; i < items.length; i++) {
 					var $tabItem=$(items[i]);
 					if ("${itemNum}"==i) {
