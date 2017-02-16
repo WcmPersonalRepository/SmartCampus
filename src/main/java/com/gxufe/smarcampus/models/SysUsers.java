@@ -23,6 +23,7 @@ public class SysUsers implements java.io.Serializable {
 	// Fields
 
 	private Integer userId;
+	private String status;
 	private String username;
 	private String name;
 	private String password;
@@ -34,10 +35,9 @@ public class SysUsers implements java.io.Serializable {
 	private String VQzjgmc;
 	private String depId;
 	private String depName;
-	private Integer enabled;
-	private Integer accountNonExpired;
-	private Integer accountNonLocked;
-	private Integer credentialsNonExpired;
+	private Integer accountNonExpired1;
+	private Integer accountNonLocked1;
+	private Integer credentialsNonExpired1;
 	private Set<SysUsersRoles> sysUsersRoleses = new HashSet<SysUsersRoles>(0);
 
 	// Constructors
@@ -54,13 +54,14 @@ public class SysUsers implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public SysUsers(Integer userId, String username, String name,
+	public SysUsers(Integer userId, String status,String username, String name,
 			String password, Timestamp dtCreate, Timestamp lastLogin,
 			Timestamp deadline, String loginIp, String VQzjgid, String VQzjgmc,
-			String depId, String depName, Integer enabled,
-			Integer accountNonExpired, Integer accountNonLocked,
-			Integer credentialsNonExpired, Set<SysUsersRoles> sysUsersRoleses) {
+			String depId, String depName, 
+			Integer accountNonExpired1, Integer accountNonLocked1,
+			Integer credentialsNonExpired1, Set<SysUsersRoles> sysUsersRoleses) {
 		this.userId = userId;
+		this.status = status;
 		this.username = username;
 		this.name = name;
 		this.password = password;
@@ -72,10 +73,9 @@ public class SysUsers implements java.io.Serializable {
 		this.VQzjgmc = VQzjgmc;
 		this.depId = depId;
 		this.depName = depName;
-		this.enabled = enabled;
-		this.accountNonExpired = accountNonExpired;
-		this.accountNonLocked = accountNonLocked;
-		this.credentialsNonExpired = credentialsNonExpired;
+		this.accountNonExpired1 = accountNonExpired1;
+		this.accountNonExpired1 = accountNonExpired1;
+		this.credentialsNonExpired1 = credentialsNonExpired1;
 		this.sysUsersRoleses = sysUsersRoleses;
 	}
 
@@ -98,6 +98,15 @@ public class SysUsers implements java.io.Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	@Column(name = "STATUS", nullable = false, length = 100)
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Column(name = "NAME", length = 100)
@@ -190,7 +199,7 @@ public class SysUsers implements java.io.Serializable {
 		this.depName = depName;
 	}
 
-	@Column(name = "ENABLED", precision = 8, scale = 0)
+/*	@Column(name = "ENABLED", precision = 8, scale = 0)
 	public Integer getEnabled() {
 		return this.enabled;
 	}
@@ -198,32 +207,32 @@ public class SysUsers implements java.io.Serializable {
 	public void setEnabled(Integer enabled) {
 		this.enabled = enabled;
 	}
-
+*/
 	@Column(name = "ACCOUNT_NON_EXPIRED", precision = 8, scale = 0)
-	public Integer getAccountNonExpired() {
-		return this.accountNonExpired;
+	public Integer getAccountNonExpired1() {
+		return this.accountNonExpired1;
 	}
 
-	public void setAccountNonExpired(Integer accountNonExpired) {
-		this.accountNonExpired = accountNonExpired;
+	public void setAccountNonExpired1(Integer accountNonExpired1) {
+		this.accountNonExpired1 = accountNonExpired1;
 	}
 
 	@Column(name = "ACCOUNT_NON_LOCKED", precision = 8, scale = 0)
-	public Integer getAccountNonLocked() {
-		return this.accountNonLocked;
+	public Integer getAccountNonLocked1() {
+		return this.accountNonExpired1;
 	}
 
-	public void setAccountNonLocked(Integer accountNonLocked) {
-		this.accountNonLocked = accountNonLocked;
+	public void setAccountNonLocked1(Integer accountNonExpired1) {
+		this.accountNonExpired1 = accountNonExpired1;
 	}
 
 	@Column(name = "CREDENTIALS_NON_EXPIRED", precision = 8, scale = 0)
-	public Integer getCredentialsNonExpired() {
-		return this.credentialsNonExpired;
+	public Integer getCredentialsNonExpired1() {
+		return this.credentialsNonExpired1;
 	}
 
-	public void setCredentialsNonExpired(Integer credentialsNonExpired) {
-		this.credentialsNonExpired = credentialsNonExpired;
+	public void setCredentialsNonExpired1(Integer credentialsNonExpired1) {
+		this.credentialsNonExpired1 = credentialsNonExpired1;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysUsers")

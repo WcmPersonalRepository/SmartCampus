@@ -21,5 +21,6 @@
              </tr>  
           </table>  
       </form>  
+      <h1>${msg }</h1>
 </body>
 </html>

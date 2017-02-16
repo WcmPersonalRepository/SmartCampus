@@ -12,7 +12,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class SpringSecurityUserAuth extends UserAuthDTO implements UserDetails {
+import com.gxufe.smarcampus.models.SysUsers;
+
+public class SpringSecurityUserAuth extends SysUsers implements UserDetails {
 
 	private Collection<? extends GrantedAuthority> authorities;
 
@@ -30,15 +32,30 @@ public class SpringSecurityUserAuth extends UserAuthDTO implements UserDetails {
     }
 
     public boolean isCredentialsNonExpired() {
-        return true;
+    	Integer credentialsNonExpired=this.getCredentialsNonExpired1();
+    	if (!(null==credentialsNonExpired||credentialsNonExpired!=1)) {
+			return true;
+		}else{
+			return false;
+		}
     }
 
     public boolean isAccountNonLocked() {
-        return true;
+    	Integer accountNonLocked=this.getAccountNonLocked1();
+    	if (!(null==accountNonLocked||accountNonLocked!=1)) {
+			return true;
+		}else{
+			return false;
+		}
     }
 
     public boolean isAccountNonExpired() {
-        return true;
+    	Integer accountNonExpired=this.getAccountNonExpired1();
+    	if (!(null==accountNonExpired||accountNonExpired!=1)) {
+			return true;
+		}else{
+			return false;
+		}
     }
     
     
@@ -49,7 +66,7 @@ public class SpringSecurityUserAuth extends UserAuthDTO implements UserDetails {
 		this.authorities = authorities;
 	}
 
-	private void writeObject(ObjectOutputStream out) throws IOException {
+	/*private void writeObject(ObjectOutputStream out) throws IOException {
         out.defaultWriteObject();
         out.writeObject(getId());
         out.writeObject(getScopeId());
@@ -61,5 +78,5 @@ public class SpringSecurityUserAuth extends UserAuthDTO implements UserDetails {
         setId((String) in.readObject());
         setScopeId((String) in.readObject());
     }
-
+*/
 }
