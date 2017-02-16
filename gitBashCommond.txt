@@ -1,0 +1,10 @@
+1.提交代码
+1）、git init
+2）、git add .
+3）、git commit -m "注释"
+4）、git push -u origin master
+2.拉取远程代码
+git remote add origin <GitHub远程地址>
+
+3.查看分支
+git branch --list
