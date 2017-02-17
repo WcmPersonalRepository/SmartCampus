@@ -7,11 +7,11 @@
       <span class="icon icon-browser"></span>
       <span class="tab-label">管理</span>
     </a>
-    <a class="tab-item" href="${base}/HappyShare?itemNum=2">
+    <a class="tab-item" href="${base}/happyShare?itemNum=2">
       <span class="icon icon-app"></span>
       <span class="tab-label">乐享</span>
     </a>
-    <a class="tab-item" href="${base}/My?itemNum=3">
+    <a class="tab-item" href="${base}/my/my?itemNum=3">
       <span class="icon icon-friends"></span>
       <span class="tab-label">我的</span>
     </a>

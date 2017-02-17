@@ -1,5 +1,5 @@
 <#include "/PUBLIC/head.ftl"/>
-    <title>我的生活</title>
+    <title>智慧校园</title>
  </head>
  
  <body>

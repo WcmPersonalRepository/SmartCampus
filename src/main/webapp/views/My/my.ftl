@@ -1,5 +1,5 @@
 <#include "/PUBLIC/head.ftl"/>
-    <title>教务网络管理系统</title>
+    <title>个人资料</title>
  </head>
  
  <body>
@@ -9,7 +9,7 @@
       <span class="icon icon-left"></span>
       返回
     </a> -->
-    <h1 class="title title-color">教务网络管理系统</h1>
+    <h1 class="title title-color">个人资料</h1>
   </header>
   
   <div class="content">
