@@ -1,3 +1,29 @@
-/* app全局样式 */
+/* app全锟斤拷锟斤拷式 */
 .apptitle{background-color: #3399ff;margin-left: 0;}
+body{font-family:'寰蒋闆呴粦';}
+.content{margin-bottom: 55px;}
 .title-color{color: white;}
+.click:ACTIVE{background-color:#ddd; }
+ul{margin: 0;padding: 0;}
+ul li{list-style: none;}
+
+/* 棣栭〉鏍峰紡 */
+.special_subject{width: 100%;background-color: white;}
+.right_line{border-right:#ddd solid 1px; }
+.right_bottom{border-bottom: #ddd solid 1px; }
+.item_list{height: 155px;}
+.item_list li{float: left;width: 33.33%;text-align: center;padding-top: 2%;}
+.item_list li:ACTIVE{background-color: #ddd;}
+.item_list li span{float: left;padding: 3% 20%;}
+.item_list li p{font-family:'寰蒋闆呴粦'; font-size: 1.1em;}
+.item_list li img{width: 100%;}
+.campus_activities{width: 100%;background-color: white;margin-top: 20px;padding: 10px 10px;}
+.activities_title{}
+.vertical_line{width: 5px;height: 25px;background-color: #3399ff; }
+.video-title{margin-top: 0;}
+.video-info{font-size: 0.7em;}
+.video-item{padding-top: 10px;}
+
+
+
+

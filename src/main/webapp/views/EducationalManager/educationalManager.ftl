@@ -13,7 +13,13 @@
   </header>
   
   <div class="content">
-     这里是页面内容区
+     <div class="manger-items">
+     	<div class="manager-item">
+     		<div class="manager-item-title">
+     			<img alt="" src="">
+     		</div>
+     	</div>
+     </div>
   </div>
   
   <#include "/PUBLIC/nav-bar.ftl"/>
