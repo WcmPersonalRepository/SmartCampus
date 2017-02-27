@@ -147,5 +147,11 @@
 				transitionStyle: "fade"
 			});
 		});
+
+		$(".video-item").each(function(){
+			$(this).click(function(){
+				goHref("showVideo");
+			});
+		});
 	</script>
 </html>

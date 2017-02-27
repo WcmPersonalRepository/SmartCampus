@@ -30,12 +30,11 @@
     </authentication-manager>
     
     <beans:bean name="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
-		<beans:property name="userDetailsService"/>
-		<beans:property name="passwordEncoder"/>
+		<beans:property name="userDetailsService" ref="userDetailsService"/>
+		<beans:property name="passwordEncoder" ref="bcryptEncoder"/>
 	</beans:bean>
 	
 	<beans:bean name="userDetailsService" class="com.gxufe.smarcampus.security.client.DefaultUserDetailsService">
-		<beans:property name="userAuthConnector" ref="userAuthConnector"/>
 	</beans:bean>
 	
 	<beans:bean name="passwordEncoder" class="com.gxufe.smarcampus.common.util.PasswordEncoderFactoryBean">
@@ -55,15 +54,18 @@
 		<logout invalidate-session="true" delete-cookies="JSESSIONID"
 			logout-url="/logout" logout-success-url="/" />
 		<logout />
-
 		<!-- Security zones -->
 		<!-- /user目录下必须是授权用户 -->
-		<intercept-url pattern="/login" access="permitAll"/>
+		<!-- permitAll和none是有区别的，permitAll指所有登录和未登录人员都可以访问，这个设置是需要经过security filter的，而none也指所有人员都可以访问，但不会经过sec filter-->
+		 <!-- <intercept-url pattern="/login" access="permitAll"/> 
+		 <intercept-url pattern="/user/**" access="hasRole('ROLE_SC')"/> 
 		<intercept-url pattern="/anony/**" access="permitAll"/>
-		<intercept-url pattern="/manager/**" access="hasRole('ROLE_HR')"/>
+		<intercept-url pattern="/manager/**" access="hasRole('ROLE_SC')"/>
 		<intercept-url pattern="/system/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/uploads/**" access="hasAnyRole('ROLE_HR','ROLE_ADMIN')"/>
-		<intercept-url pattern="/**" access="isAuthenticated()" />
+		<intercept-url pattern="/uploads/**" access="hasAnyRole('ROLE_SC','ROLE_ADMIN')"/> -->
+		<!-- 只有拥有权限的人才能访问  -->
+		<!-- <intercept-url pattern="/**" access="isAuthenticated()" /> -->
+		<intercept-url pattern="/**" access="permitAll" />
 
 		<!-- CSRF -->
 <!-- 		<csrf /> -->

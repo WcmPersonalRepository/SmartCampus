@@ -21,7 +21,6 @@
 		initNavBar();
 		function initNavBar(){
 			var items=$(".bar-tab").children();
-			console.log("${itemNum}");
 			if ("${itemNum}"=="") {
 				$(items[0]).addClass("active");
 			}else{

@@ -15,4 +15,9 @@ public class EducationalManagerContrller {
 		model.addAttribute("itemNum",itemNum);
 		return "EducationalManager/educationalManager";
 	}
+	
+	@RequestMapping("/showVideo")
+	public String showVideo(HttpServletRequest request,Model model){
+		return "EducationalManager/videoPlay";
+	}
 }
