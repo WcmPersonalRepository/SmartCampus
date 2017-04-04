@@ -141,7 +141,7 @@ public class SysAuthorities implements java.io.Serializable {
 		this.moduleId = moduleId;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysAuthorities")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysAuthorities")
 	public Set<SysRolesAuthorities> getSysRolesAuthoritieses() {
 		return this.sysRolesAuthoritieses;
 	}
@@ -151,7 +151,7 @@ public class SysAuthorities implements java.io.Serializable {
 		this.sysRolesAuthoritieses = sysRolesAuthoritieses;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysAuthorities")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysAuthorities")
 	public Set<SysAuthoritiesResources> getSysAuthoritiesResourceses() {
 		return this.sysAuthoritiesResourceses;
 	}

@@ -12,8 +12,8 @@ ul li{list-style: none;}
 .special_subject{width: 100%;background-color: white;}
 .right_line{border-right:#ddd solid 1px; }
 .right_bottom{border-bottom: #ddd solid 1px; }
-.item_list{height: 145px;}
-.item_list li{float: left;width: 33.33%;text-align: center;padding-top: 2%;}
+.item_list{height: 139px;}
+.item_list li{float: left;width: 33.33%;text-align: center;}
 .item_list li:ACTIVE{background-color: #ddd;}
 .item_list li span{float: left;padding: 3% 20%;}
 .item_list li p{font-family:'微软雅黑'; font-size: 1em;}

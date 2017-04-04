@@ -11,29 +11,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * SysRolesMoudles entity. @author MyEclipse Persistence Tools
+ * SysUsersRoles entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "sys_roles_moudles", catalog = "smartcampus")
-public class SysRolesMoudles implements java.io.Serializable {
+@Table(name = "sys_users_roles", catalog = "smartcampus")
+public class SysUsersRoles implements java.io.Serializable {
 
 	// Fields
 
 	private Integer id;
+	private SysUsers sysUsers;
 	private SysRoles sysRoles;
-	private SysModules sysModules;
 
 	// Constructors
 
 	/** default constructor */
-	public SysRolesMoudles() {
+	public SysUsersRoles() {
 	}
 
 	/** full constructor */
-	public SysRolesMoudles(Integer id, SysRoles sysRoles, SysModules sysModules) {
+	public SysUsersRoles(Integer id, SysUsers sysUsers, SysRoles sysRoles) {
 		this.id = id;
+		this.sysUsers = sysUsers;
 		this.sysRoles = sysRoles;
-		this.sysModules = sysModules;
 	}
 
 	// Property accessors
@@ -48,7 +48,17 @@ public class SysRolesMoudles implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "USER_ID", nullable = false)
+	public SysUsers getSysUsers() {
+		return this.sysUsers;
+	}
+
+	public void setSysUsers(SysUsers sysUsers) {
+		this.sysUsers = sysUsers;
+	}
+
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "ROLE_ID", nullable = false)
 	public SysRoles getSysRoles() {
 		return this.sysRoles;
@@ -56,16 +66,6 @@ public class SysRolesMoudles implements java.io.Serializable {
 
 	public void setSysRoles(SysRoles sysRoles) {
 		this.sysRoles = sysRoles;
-	}
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "MODULE_ID", nullable = false)
-	public SysModules getSysModules() {
-		return this.sysModules;
-	}
-
-	public void setSysModules(SysModules sysModules) {
-		this.sysModules = sysModules;
 	}
 
 }

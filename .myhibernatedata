@@ -1,24 +1,24 @@
 #MyEclipse Hibernate Properties
-#Sat Feb 11 14:54:36 CST 2017
+#Mon Apr 03 13:38:44 CST 2017
 sessionFactoryName=
 genBasicCompId=true
 profile=
 daoSFId=
 version=3.2
 jndiPath=
-detectM2M=false
+detectM2M=true
 reStrategyClass=
-detectO2O=false
+detectO2O=true
 springDaoFile=
 useJavaTypes=true
-keyGenerator=
+keyGenerator=identity
 libInstallFolder=src/main/webapp/WEB-INF/lib
 addLibs2Project=false
 genVersionTag=false
 sessionFactoryId=
 basePersistenceClass=
 genAnnotations=true
-reSettingsFile=
+reSettingsFile=/SmartCampus/hibernate.reveng.xml
 configFile=/SmartCampus/src/main/java/hibernate.cfg.xml
 createConfigFile=true
 addLibs2Classpath=false

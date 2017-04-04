@@ -120,7 +120,7 @@ public class SysRoles implements java.io.Serializable,GrantedAuthority {
 		this.moduleId = moduleId;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysRoles")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysRoles")
 	public Set<SysUsersRoles> getSysUsersRoleses() {
 		return this.sysUsersRoleses;
 	}
@@ -129,7 +129,7 @@ public class SysRoles implements java.io.Serializable,GrantedAuthority {
 		this.sysUsersRoleses = sysUsersRoleses;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysRoles")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysRoles")
 	public Set<SysRolesMoudles> getSysRolesMoudleses() {
 		return this.sysRolesMoudleses;
 	}

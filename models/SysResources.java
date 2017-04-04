@@ -149,7 +149,7 @@ public class SysResources implements java.io.Serializable {
 		this.issys = issys;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysResources")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysResources")
 	public Set<SysAuthoritiesResources> getSysAuthoritiesResourceses() {
 		return this.sysAuthoritiesResourceses;
 	}

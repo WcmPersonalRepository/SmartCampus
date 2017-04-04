@@ -49,7 +49,7 @@ public class SysAuthoritiesResources implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "AUTHORITY_ID", nullable = false)
 	public SysAuthorities getSysAuthorities() {
 		return this.sysAuthorities;
@@ -59,7 +59,7 @@ public class SysAuthoritiesResources implements java.io.Serializable {
 		this.sysAuthorities = sysAuthorities;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "RESOURCE_ID", nullable = false)
 	public SysResources getSysResources() {
 		return this.sysResources;

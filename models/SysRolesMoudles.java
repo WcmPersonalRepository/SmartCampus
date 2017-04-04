@@ -48,7 +48,7 @@ public class SysRolesMoudles implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ROLE_ID", nullable = false)
 	public SysRoles getSysRoles() {
 		return this.sysRoles;
@@ -58,7 +58,7 @@ public class SysRolesMoudles implements java.io.Serializable {
 		this.sysRoles = sysRoles;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MODULE_ID", nullable = false)
 	public SysModules getSysModules() {
 		return this.sysModules;

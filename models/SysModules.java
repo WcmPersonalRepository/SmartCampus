@@ -182,7 +182,7 @@ public class SysModules implements java.io.Serializable {
 		this.priority = priority;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysModules")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysModules")
 	public Set<SysResources> getSysResourceses() {
 		return this.sysResourceses;
 	}
@@ -191,7 +191,7 @@ public class SysModules implements java.io.Serializable {
 		this.sysResourceses = sysResourceses;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysModules")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysModules")
 	public Set<SysRolesMoudles> getSysRolesMoudleses() {
 		return this.sysRolesMoudleses;
 	}

@@ -3,6 +3,7 @@
 
 <hibernate-reverse-engineering>
 
+
 	<table name="userinfo" catalog="smartcampus" class="UserInfo">
 		<primary-key>
 			<generator class="increment"></generator>
@@ -13,9 +14,10 @@
 			<generator class="increment"></generator>
 		</primary-key>
 	</table>
-<table name="users" catalog="smartcampus" class="Users">
-	<primary-key>
-		<generator class="increment"></generator>
-	</primary-key>
-</table>
+	<table name="users" catalog="smartcampus" class="Users">
+		<primary-key>
+			<generator class="increment"></generator>
+		</primary-key>
+	</table>
+	<table name="sys_users_roles" catalog="smartcampus"></table>
 </hibernate-reverse-engineering>

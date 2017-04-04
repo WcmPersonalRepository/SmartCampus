@@ -8,10 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,13 +22,11 @@ public class SysUsers implements java.io.Serializable {
 
 	// Fields
 
-	private String userId;
-	private SysStudent sysStudent;
-	private SysTeacher sysTeacher;
+	private Integer userId;
+	private String status;
 	private String username;
 	private String name;
 	private String password;
-	private String status;
 	private Timestamp dtCreate;
 	private Timestamp lastLogin;
 	private Timestamp deadline;
@@ -39,13 +35,10 @@ public class SysUsers implements java.io.Serializable {
 	private String VQzjgmc;
 	private String depId;
 	private String depName;
-	private Integer enabled;
 	private Integer accountNonExpired1;
 	private Integer accountNonLocked1;
 	private Integer credentialsNonExpired1;
-	private Integer isCampusAuthentication;
 	private Set<SysUsersRoles> sysUsersRoleses = new HashSet<SysUsersRoles>(0);
-	private Set<SysLeaveInfoRecord> sysLeaveInfoRecord = new HashSet<SysLeaveInfoRecord>(0);
 
 	// Constructors
 
@@ -54,23 +47,21 @@ public class SysUsers implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public SysUsers(String username, String password) {
+	public SysUsers(Integer userId, String username, String password) {
+		this.userId = userId;
 		this.username = username;
 		this.password = password;
 	}
 
 	/** full constructor */
-	public SysUsers(Set<SysLeaveInfoRecord> sysLeaveInfoRecord,
-			SysStudent sysStudent, SysTeacher sysTeacher, String username,
-			String name, String password, Timestamp dtCreate,
-			Timestamp lastLogin, Timestamp deadline, String loginIp,
-			String VQzjgid, String VQzjgmc, String depId, String depName,
-			Integer enabled, Integer accountNonExpired,
-			Integer accountNonLocked, Integer credentialsNonExpired,
-			Integer isCampusAuthentication, Set<SysUsersRoles> sysUsersRoleses ) {
-		this.sysLeaveInfoRecord = sysLeaveInfoRecord;
-		this.sysStudent = sysStudent;
-		this.sysTeacher = sysTeacher;
+	public SysUsers(Integer userId, String status,String username, String name,
+			String password, Timestamp dtCreate, Timestamp lastLogin,
+			Timestamp deadline, String loginIp, String VQzjgid, String VQzjgmc,
+			String depId, String depName, 
+			Integer accountNonExpired1, Integer accountNonLocked1,
+			Integer credentialsNonExpired1, Set<SysUsersRoles> sysUsersRoleses) {
+		this.userId = userId;
+		this.status = status;
 		this.username = username;
 		this.name = name;
 		this.password = password;
@@ -82,45 +73,22 @@ public class SysUsers implements java.io.Serializable {
 		this.VQzjgmc = VQzjgmc;
 		this.depId = depId;
 		this.depName = depName;
-		this.enabled = enabled;
 		this.accountNonExpired1 = accountNonExpired1;
-		this.accountNonLocked1 = accountNonLocked1;
+		this.accountNonExpired1 = accountNonExpired1;
 		this.credentialsNonExpired1 = credentialsNonExpired1;
-		this.isCampusAuthentication = isCampusAuthentication;
 		this.sysUsersRoleses = sysUsersRoleses;
 	}
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "USER_ID", unique = true, nullable = false, length = 100)
-	public String getUserId() {
+	public Integer getUserId() {
 		return this.userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
-	}
-
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "STUDENT_ID")
-	public SysStudent getSysStudent() {
-		return this.sysStudent;
-	}
-
-	public void setSysStudent(SysStudent sysStudent) {
-		this.sysStudent = sysStudent;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "teacher_id")
-	public SysTeacher getSysTeacher() {
-		return this.sysTeacher;
-	}
-
-	public void setSysTeacher(SysTeacher sysTeacher) {
-		this.sysTeacher = sysTeacher;
 	}
 
 	@Column(name = "USERNAME", nullable = false, length = 100)
@@ -130,6 +98,15 @@ public class SysUsers implements java.io.Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	@Column(name = "STATUS", nullable = false, length = 100)
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Column(name = "NAME", length = 100)
@@ -148,16 +125,6 @@ public class SysUsers implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-	
-	@Column(name = "status", nullable = false, length = 5)
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 	@Column(name = "DT_CREATE", length = 19)
@@ -232,7 +199,7 @@ public class SysUsers implements java.io.Serializable {
 		this.depName = depName;
 	}
 
-	@Column(name = "ENABLED", precision = 8, scale = 0)
+/*	@Column(name = "ENABLED", precision = 8, scale = 0)
 	public Integer getEnabled() {
 		return this.enabled;
 	}
@@ -240,35 +207,7 @@ public class SysUsers implements java.io.Serializable {
 	public void setEnabled(Integer enabled) {
 		this.enabled = enabled;
 	}
-
-
-	@Column(name = "is_campus_authentication")
-	public Integer getIsCampusAuthentication() {
-		return this.isCampusAuthentication;
-	}
-
-	public void setIsCampusAuthentication(Integer isCampusAuthentication) {
-		this.isCampusAuthentication = isCampusAuthentication;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysUsers")
-	public Set<SysUsersRoles> getSysUsersRoleses() {
-		return this.sysUsersRoleses;
-	}
-
-	public void setSysUsersRoleses(Set<SysUsersRoles> sysUsersRoleses) {
-		this.sysUsersRoleses = sysUsersRoleses;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysUsers")
-	public Set<SysLeaveInfoRecord> getSysLeaveInfoRecord() {
-		return this.sysLeaveInfoRecord;
-	}
-
-	public void setSysLeaveInfoRecord(Set<SysLeaveInfoRecord> sysLeaveInfoRecord) {
-		this.sysLeaveInfoRecord = sysLeaveInfoRecord;
-	}
-	
+*/
 	@Column(name = "ACCOUNT_NON_EXPIRED", precision = 8, scale = 0)
 	public Integer getAccountNonExpired1() {
 		return this.accountNonExpired1;
@@ -294,6 +233,15 @@ public class SysUsers implements java.io.Serializable {
 
 	public void setCredentialsNonExpired1(Integer credentialsNonExpired1) {
 		this.credentialsNonExpired1 = credentialsNonExpired1;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysUsers")
+	public Set<SysUsersRoles> getSysUsersRoleses() {
+		return this.sysUsersRoleses;
+	}
+
+	public void setSysUsersRoleses(Set<SysUsersRoles> sysUsersRoleses) {
+		this.sysUsersRoleses = sysUsersRoleses;
 	}
 
 }

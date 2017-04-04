@@ -10,30 +10,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 /**
- * SysRolesMoudles entity. @author MyEclipse Persistence Tools
+ * SysRolesAuthorities entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "sys_roles_moudles", catalog = "smartcampus")
-public class SysRolesMoudles implements java.io.Serializable {
+@Table(name = "sys_roles_authorities", catalog = "smartcampus")
+public class SysRolesAuthorities implements java.io.Serializable {
 
 	// Fields
 
 	private Integer id;
+	private SysAuthorities sysAuthorities;
 	private SysRoles sysRoles;
-	private SysModules sysModules;
 
 	// Constructors
 
 	/** default constructor */
-	public SysRolesMoudles() {
+	public SysRolesAuthorities() {
 	}
 
 	/** full constructor */
-	public SysRolesMoudles(Integer id, SysRoles sysRoles, SysModules sysModules) {
+	public SysRolesAuthorities(Integer id, SysAuthorities sysAuthorities,
+			SysRoles sysRoles) {
 		this.id = id;
+		this.sysAuthorities = sysAuthorities;
 		this.sysRoles = sysRoles;
-		this.sysModules = sysModules;
 	}
 
 	// Property accessors
@@ -48,7 +51,17 @@ public class SysRolesMoudles implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "AUTHORITY_ID", nullable = false)
+	public SysAuthorities getSysAuthorities() {
+		return this.sysAuthorities;
+	}
+
+	public void setSysAuthorities(SysAuthorities sysAuthorities) {
+		this.sysAuthorities = sysAuthorities;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ROLE_ID", nullable = false)
 	public SysRoles getSysRoles() {
 		return this.sysRoles;
@@ -58,14 +71,5 @@ public class SysRolesMoudles implements java.io.Serializable {
 		this.sysRoles = sysRoles;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "MODULE_ID", nullable = false)
-	public SysModules getSysModules() {
-		return this.sysModules;
-	}
-
-	public void setSysModules(SysModules sysModules) {
-		this.sysModules = sysModules;
-	}
 
 }
