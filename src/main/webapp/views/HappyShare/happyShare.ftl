@@ -75,7 +75,7 @@
 				</div>
 				<div class="col-50">
 					<img alt="" src="${base}/resources/images/happyShare/share_02.png">
-					<div>缴电费</div>
+					<div style="background-color: rgba(34,168,253,0.5);">缴电费<span style="float: right;margin-right: 20px;">集成中</span></div>
 				</div>
 			</div>
 			<div class="recommended-item row">
@@ -91,11 +91,27 @@
 			<div class="recommended-item row">
 				<div class="col-50">
 					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
-					<div>校园一卡通</div>
+					<div style="background-color: rgba(34,168,253,0.5);">校园卡充值<span style="float: right;margin-right: 20px;">集成中</span></div>
 				</div>
 				<div class="col-50">
 					<img alt="" src="${base}/resources/images/happyShare/share_06.png">
-					<div>校园生活</div>
+					<div>精品课程</div>
+				</div>
+			</div>
+			<div class="recommended-item row">
+				<div class="col-50">
+					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
+					<div style="background-color: rgba(34,168,253,0.5);">考研在线<span style="float: right;margin-right: 20px;">集成中</span></div>
+				</div>
+				<div class="col-50">
+					<img alt="" src="${base}/resources/images/happyShare/share_06.png">
+					<div>常用表格下载</div>
+				</div>
+			</div>
+			<div class="recommended-item row">
+				<div class="col-50">
+					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
+					<div style="background-color: rgba(34,168,253,0.5);">更多分享<span style="float: right;margin-right: 20px;">集成中</span></div>
 				</div>
 			</div>
 		</div>

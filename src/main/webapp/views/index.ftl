@@ -35,7 +35,7 @@
 							<img src="${base}/resources/images/index/advice.png"/>
 						</a>
 					</span>
-					<p>通知广告</p>
+					<p>通知公告</p>
 				</li>
 				<li class="item right_line">
 					<span>
@@ -58,10 +58,10 @@
 				<li class="item right_line">
 					<span>
 						<a href="#">
-							<img src="${base}/resources/images/index/hot.png"/>
+							<img src="${base}/resources/images/index/conference.png"/>
 						</a>
 					</span>
-					<p>热点专题</p>
+					<p>会议通知</p>
 				</li>
 				<li class="item right_line">
 					<span>
