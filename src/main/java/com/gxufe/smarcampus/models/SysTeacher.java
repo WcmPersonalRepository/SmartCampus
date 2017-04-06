@@ -28,6 +28,7 @@ public class SysTeacher implements java.io.Serializable {
 	private SysUsers sysUsers;
 	private SysCollege sysCollege;
 	private String workNumber;
+	private String realName;
 	private String sex;
 	private String reservedField1;
 	private String reservedField2;
@@ -42,7 +43,7 @@ public class SysTeacher implements java.io.Serializable {
 
 	/** full constructor */
 	public SysTeacher(SysPart sysPart, SysUsers sysUsers,
-			SysCollege sysCollege, String workNumber, String sex,
+			SysCollege sysCollege, String workNumber, String sex,String realName,
 			String reservedField1, String reservedField2,
 			String reservedField3, String reservedField4 ) {
 		this.sysPart = sysPart;
@@ -50,6 +51,7 @@ public class SysTeacher implements java.io.Serializable {
 		this.sysCollege = sysCollege;
 		this.workNumber = workNumber;
 		this.sex = sex;
+		this.realName = realName;
 		this.reservedField1 = reservedField1;
 		this.reservedField2 = reservedField2;
 		this.reservedField3 = reservedField3;
@@ -105,6 +107,15 @@ public class SysTeacher implements java.io.Serializable {
 
 	public void setWorkNumber(String workNumber) {
 		this.workNumber = workNumber;
+	}
+	
+	@Column(name = "real_name", length = 20)
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
 
 	@Column(name = "sex", length = 2)

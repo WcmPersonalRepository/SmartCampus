@@ -84,7 +84,7 @@ public class SysCampus implements java.io.Serializable {
 		this.campusLocation = campusLocation;
 	}
 
-	@Column(name = "campus_description", length = 65535)
+	@Column(name = "campus_description", length = 200)
 	public String getCampusDescription() {
 		return this.campusDescription;
 	}
