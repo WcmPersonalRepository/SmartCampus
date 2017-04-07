@@ -28,7 +28,7 @@
 		</div>
 		
 		<div class="special_subject">
-			<ul class="item_list right_bottom">
+			<ul class="item_list right_bottom row">
 				<li id="advice" class="item right_line">
 					<span>
 						<a href="">
@@ -54,7 +54,7 @@
 					<p>莲湖讲坛</p>
 				</li>
 			</ul>
-			<ul class="item_list">
+			<ul class="item_list row">
 				<li id='meetAdivce' class="item right_line">
 					<span>
 						<a href="#">

@@ -19,7 +19,7 @@
   </header>
   
   <div class="content">
-		<video class="video" src="${base}/uploads/video.mp4" controls="controls" width="100%" poster="${base}/resources/images/EducationalManager/video-test-img.png" ></video>
+		<video class="video" src="${base}/uploads/1.mp4" preload="none" controls="controls" width="100%" poster="${base}/resources/images/EducationalManager/video-test-img.png" ></video>
   </div>
   
   <#include "/PUBLIC/nav-bar.ftl"/>
