@@ -31,6 +31,10 @@ public class SysProfessional implements java.io.Serializable {
 	private String reservedField2;
 	private String reservedField3;
 	private String reservedField4;
+	private String belongCourse;
+	private String professionalCode;
+	private String educationLevel;
+	private Integer educationDuration;
 	private Set<SysClass> sysClasses = new HashSet<SysClass>(0);
 
 	// Constructors
@@ -40,11 +44,12 @@ public class SysProfessional implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public SysProfessional(SysCollege sysCollege,
-			String professionalName, String professionalDescription,
-			String reservedField1, String reservedField2,
-			String reservedField3, String reservedField4,
-			 Set<SysClass> sysClasses) {
+	public SysProfessional(SysCollege sysCollege, String professionalName,
+			String professionalDescription, String reservedField1,
+			String reservedField2, String reservedField3,
+			String reservedField4, String belongCourse,
+			String professionalCode, String educationLevel,
+			Integer educationDuration, Set<SysClass> sysClasses) {
 		this.sysCollege = sysCollege;
 		this.professionalName = professionalName;
 		this.professionalDescription = professionalDescription;
@@ -52,6 +57,10 @@ public class SysProfessional implements java.io.Serializable {
 		this.reservedField2 = reservedField2;
 		this.reservedField3 = reservedField3;
 		this.reservedField4 = reservedField4;
+		this.belongCourse = belongCourse;
+		this.professionalCode = professionalCode;
+		this.educationLevel = educationLevel;
+		this.educationDuration = educationDuration;
 		this.sysClasses = sysClasses;
 	}
 
@@ -77,7 +86,7 @@ public class SysProfessional implements java.io.Serializable {
 		this.sysCollege = sysCollege;
 	}
 
-	@Column(name = "professional_name", length = 20)
+	@Column(name = "professional_name", length = 100)
 	public String getProfessionalName() {
 		return this.professionalName;
 	}
@@ -131,7 +140,43 @@ public class SysProfessional implements java.io.Serializable {
 		this.reservedField4 = reservedField4;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysProfessional")
+	@Column(name = "belong_course", length = 50)
+	public String getBelongCourse() {
+		return this.belongCourse;
+	}
+
+	public void setBelongCourse(String belongCourse) {
+		this.belongCourse = belongCourse;
+	}
+
+	@Column(name = "professional_code", length = 10)
+	public String getProfessionalCode() {
+		return this.professionalCode;
+	}
+
+	public void setProfessionalCode(String professionalCode) {
+		this.professionalCode = professionalCode;
+	}
+
+	@Column(name = "education_level", length = 10)
+	public String getEducationLevel() {
+		return this.educationLevel;
+	}
+
+	public void setEducationLevel(String educationLevel) {
+		this.educationLevel = educationLevel;
+	}
+
+	@Column(name = "education_duration")
+	public Integer getEducationDuration() {
+		return this.educationDuration;
+	}
+
+	public void setEducationDuration(Integer educationDuration) {
+		this.educationDuration = educationDuration;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysProfessional")
 	public Set<SysClass> getSysClasses() {
 		return this.sysClasses;
 	}

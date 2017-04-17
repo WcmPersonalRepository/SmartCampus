@@ -28,34 +28,38 @@ public class SpringSecurityUserAuth extends SysUsers implements UserDetails {
     }
 
     public boolean isEnabled() {
-        return "1".equals(this.getStatus());
+       // return "1".equals(this.getStatus());
+    	 return true;
     }
 
     public boolean isCredentialsNonExpired() {
-    	Integer credentialsNonExpired=this.getCredentialsNonExpired1();
+    	/*Integer credentialsNonExpired=this.getCredentialsNonExpired();
     	if (!(null==credentialsNonExpired||credentialsNonExpired!=1)) {
 			return true;
 		}else{
 			return false;
-		}
+		}*/
+    	return true;
     }
 
     public boolean isAccountNonLocked() {
-    	Integer accountNonLocked=this.getAccountNonLocked1();
+    	/*Integer accountNonLocked=this.getAccountNonLocked();
     	if (!(null==accountNonLocked||accountNonLocked!=1)) {
 			return true;
 		}else{
 			return false;
-		}
+		}*/
+    	return true;
     }
 
     public boolean isAccountNonExpired() {
-    	Integer accountNonExpired=this.getAccountNonExpired1();
+    	/*Integer accountNonExpired=this.getAccountNonExpired();
     	if (!(null==accountNonExpired||accountNonExpired!=1)) {
 			return true;
 		}else{
 			return false;
-		}
+		}*/
+    	return true;
     }
     
     

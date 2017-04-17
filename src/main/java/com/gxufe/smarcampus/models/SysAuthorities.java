@@ -1,18 +1,14 @@
 package com.gxufe.smarcampus.models;
 
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.springframework.security.core.GrantedAuthority;
 
 /**
  * SysAuthorities entity. @author MyEclipse Persistence Tools
@@ -24,6 +20,7 @@ public class SysAuthorities implements java.io.Serializable {
 	// Fields
 
 	private Integer authorityId;
+	private SysRoles sysRoles;
 	private String authorityMark;
 	private String authorityName;
 	private String authorityDesc;
@@ -31,10 +28,6 @@ public class SysAuthorities implements java.io.Serializable {
 	private Integer enable;
 	private Integer issys;
 	private String moduleId;
-	private Set<SysRolesAuthorities> sysRolesAuthoritieses = new HashSet<SysRolesAuthorities>(
-			0);
-	private Set<SysAuthoritiesResources> sysAuthoritiesResourceses = new HashSet<SysAuthoritiesResources>(
-			0);
 
 	// Constructors
 
@@ -43,18 +36,15 @@ public class SysAuthorities implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public SysAuthorities(Integer authorityId, String authorityName) {
-		this.authorityId = authorityId;
+	public SysAuthorities(String authorityName) {
 		this.authorityName = authorityName;
 	}
 
 	/** full constructor */
-	public SysAuthorities(Integer authorityId, String authorityMark,
+	public SysAuthorities(SysRoles sysRoles, String authorityMark,
 			String authorityName, String authorityDesc, String message,
-			Integer enable, Integer issys, String moduleId,
-			Set<SysRolesAuthorities> sysRolesAuthoritieses,
-			Set<SysAuthoritiesResources> sysAuthoritiesResourceses) {
-		this.authorityId = authorityId;
+			Integer enable, Integer issys, String moduleId) {
+		this.sysRoles = sysRoles;
 		this.authorityMark = authorityMark;
 		this.authorityName = authorityName;
 		this.authorityDesc = authorityDesc;
@@ -62,20 +52,28 @@ public class SysAuthorities implements java.io.Serializable {
 		this.enable = enable;
 		this.issys = issys;
 		this.moduleId = moduleId;
-		this.sysRolesAuthoritieses = sysRolesAuthoritieses;
-		this.sysAuthoritiesResourceses = sysAuthoritiesResourceses;
 	}
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "AUTHORITY_ID", unique = true, nullable = false, length = 100)
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "AUTHORITY_ID", unique = true, nullable = false)
 	public Integer getAuthorityId() {
 		return this.authorityId;
 	}
 
 	public void setAuthorityId(Integer authorityId) {
 		this.authorityId = authorityId;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ROLE_ID")
+	public SysRoles getSysRoles() {
+		return this.sysRoles;
+	}
+
+	public void setSysRoles(SysRoles sysRoles) {
+		this.sysRoles = sysRoles;
 	}
 
 	@Column(name = "AUTHORITY_MARK", length = 100)
@@ -139,26 +137,6 @@ public class SysAuthorities implements java.io.Serializable {
 
 	public void setModuleId(String moduleId) {
 		this.moduleId = moduleId;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysAuthorities")
-	public Set<SysRolesAuthorities> getSysRolesAuthoritieses() {
-		return this.sysRolesAuthoritieses;
-	}
-
-	public void setSysRolesAuthoritieses(
-			Set<SysRolesAuthorities> sysRolesAuthoritieses) {
-		this.sysRolesAuthoritieses = sysRolesAuthoritieses;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysAuthorities")
-	public Set<SysAuthoritiesResources> getSysAuthoritiesResourceses() {
-		return this.sysAuthoritiesResourceses;
-	}
-
-	public void setSysAuthoritiesResourceses(
-			Set<SysAuthoritiesResources> sysAuthoritiesResourceses) {
-		this.sysAuthoritiesResourceses = sysAuthoritiesResourceses;
 	}
 
 }

@@ -25,12 +25,10 @@ public class SysCollege implements java.io.Serializable {
 
 	private Integer id;
 	private SysCampus sysCampus;
-	private Integer collegeName;
-	private Integer collegeDescription;
-	private Set<SysTeacher> sysTeachers = new HashSet<SysTeacher>(0);
+	private String collegeName;
+	private String collegeDescription;
 	private Set<SysProfessional> sysProfessionals = new HashSet<SysProfessional>(
 			0);
-	private Set<SysPart> sysParts = new HashSet<SysPart>(0);
 
 	// Constructors
 
@@ -39,16 +37,12 @@ public class SysCollege implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public SysCollege( SysCampus sysCampus,
-			
-			Integer collegeName, Integer collegeDescription,
-			Set<SysTeacher> sysTeachers, Set<SysProfessional> sysProfessionals,
-			Set<SysPart> sysParts) {
+	public SysCollege(SysCampus sysCampus, String collegeName,
+			String collegeDescription, Set<SysProfessional> sysProfessionals) {
+		this.sysCampus = sysCampus;
 		this.collegeName = collegeName;
 		this.collegeDescription = collegeDescription;
-		this.sysTeachers = sysTeachers;
 		this.sysProfessionals = sysProfessionals;
-		this.sysParts = sysParts;
 	}
 
 	// Property accessors
@@ -63,8 +57,7 @@ public class SysCollege implements java.io.Serializable {
 		this.id = id;
 	}
 
-
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "campus_id")
 	public SysCampus getSysCampus() {
 		return this.sysCampus;
@@ -74,36 +67,25 @@ public class SysCollege implements java.io.Serializable {
 		this.sysCampus = sysCampus;
 	}
 
-
-
-	@Column(name = "college_name")
-	public Integer getCollegeName() {
+	@Column(name = "college_name", length = 50)
+	public String getCollegeName() {
 		return this.collegeName;
 	}
 
-	public void setCollegeName(Integer collegeName) {
+	public void setCollegeName(String collegeName) {
 		this.collegeName = collegeName;
 	}
 
-	@Column(name = "college_description")
-	public Integer getCollegeDescription() {
+	@Column(name = "college_description", length = 200)
+	public String getCollegeDescription() {
 		return this.collegeDescription;
 	}
 
-	public void setCollegeDescription(Integer collegeDescription) {
+	public void setCollegeDescription(String collegeDescription) {
 		this.collegeDescription = collegeDescription;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysCollege")
-	public Set<SysTeacher> getSysTeachers() {
-		return this.sysTeachers;
-	}
-
-	public void setSysTeachers(Set<SysTeacher> sysTeachers) {
-		this.sysTeachers = sysTeachers;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysCollege")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysCollege")
 	public Set<SysProfessional> getSysProfessionals() {
 		return this.sysProfessionals;
 	}
@@ -111,15 +93,5 @@ public class SysCollege implements java.io.Serializable {
 	public void setSysProfessionals(Set<SysProfessional> sysProfessionals) {
 		this.sysProfessionals = sysProfessionals;
 	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysCollege")
-	public Set<SysPart> getSysParts() {
-		return this.sysParts;
-	}
-
-	public void setSysParts(Set<SysPart> sysParts) {
-		this.sysParts = sysParts;
-	}
-
 
 }

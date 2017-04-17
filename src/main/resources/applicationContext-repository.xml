@@ -110,6 +110,7 @@
 				<!-- 解决中文乱码问题，要求mysql数据库charset为utf-8 -->
 				<prop key="connection.useUnicode">true</prop>
 				<prop key="connection.characterEncoding">utf-8</prop>
+				<prop key="hibernate.show_sql">true</prop>
 				<!-- spring集成配置 -->				
 				<prop key="hibernate.current_session_context_class">
 					org.springframework.orm.hibernate3.SpringSessionContext

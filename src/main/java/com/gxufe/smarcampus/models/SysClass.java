@@ -25,6 +25,7 @@ public class SysClass implements java.io.Serializable {
 
 	private Integer id;
 	private SysProfessional sysProfessional;
+	private SysTeacher sysTeacher;
 	private String className;
 	private String reservedField1;
 	private String reservedField2;
@@ -39,9 +40,9 @@ public class SysClass implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public SysClass(SysProfessional sysProfessional,
-			String className, String reservedField1, String reservedField2,
-			String reservedField3, String reservedField4,
+	public SysClass(SysProfessional sysProfessional, String className,
+			String reservedField1, String reservedField2,
+			String reservedField3, String reservedField4,SysTeacher sysTeacher,
 			Set<SysStudent> sysStudents) {
 		this.sysProfessional = sysProfessional;
 		this.className = className;
@@ -50,6 +51,8 @@ public class SysClass implements java.io.Serializable {
 		this.reservedField3 = reservedField3;
 		this.reservedField4 = reservedField4;
 		this.sysStudents = sysStudents;
+		this.sysTeacher = sysTeacher;;
+		
 	}
 
 	// Property accessors
@@ -64,7 +67,7 @@ public class SysClass implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "professional_id")
 	public SysProfessional getSysProfessional() {
 		return this.sysProfessional;
@@ -72,6 +75,16 @@ public class SysClass implements java.io.Serializable {
 
 	public void setSysProfessional(SysProfessional sysProfessional) {
 		this.sysProfessional = sysProfessional;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "teacher_id")
+	public SysTeacher getSysTeacher() {
+		return sysTeacher;
+	}
+
+	public void setSysTeacher(SysTeacher sysTeacher) {
+		this.sysTeacher = sysTeacher;
 	}
 
 	@Column(name = "class_name", length = 10)
@@ -119,7 +132,7 @@ public class SysClass implements java.io.Serializable {
 		this.reservedField4 = reservedField4;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysClass")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysClass")
 	public Set<SysStudent> getSysStudents() {
 		return this.sysStudents;
 	}

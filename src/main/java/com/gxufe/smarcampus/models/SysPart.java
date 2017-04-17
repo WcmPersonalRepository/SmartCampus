@@ -24,9 +24,10 @@ public class SysPart implements java.io.Serializable {
 	// Fields
 
 	private Integer id;
-	private SysCollege sysCollege;
-	private String partId;
+	private SysOrganization sysOrganization;
+	private String partName;
 	private String partDescription;
+	private String remark;
 	private Set<SysTeacher> sysTeachers = new HashSet<SysTeacher>(0);
 
 	// Constructors
@@ -36,11 +37,12 @@ public class SysPart implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public SysPart(SysCollege sysCollege, String partId,
-			String partDescription, Set<SysTeacher> sysTeachers) {
-		this.sysCollege = sysCollege;
-		this.partId = partId;
+	public SysPart(SysOrganization sysOrganization, String partName,
+			String partDescription, String remark, Set<SysTeacher> sysTeachers) {
+		this.sysOrganization = sysOrganization;
+		this.partName = partName;
 		this.partDescription = partDescription;
+		this.remark = remark;
 		this.sysTeachers = sysTeachers;
 	}
 
@@ -56,23 +58,23 @@ public class SysPart implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "college_id")
-	public SysCollege getSysCollege() {
-		return this.sysCollege;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "organization_id")
+	public SysOrganization getSysOrganization() {
+		return this.sysOrganization;
 	}
 
-	public void setSysCollege(SysCollege sysCollege) {
-		this.sysCollege = sysCollege;
+	public void setSysOrganization(SysOrganization sysOrganization) {
+		this.sysOrganization = sysOrganization;
 	}
 
-	@Column(name = "part_id", length = 50)
-	public String getPartId() {
-		return this.partId;
+	@Column(name = "part_name", length = 50)
+	public String getPartName() {
+		return this.partName;
 	}
 
-	public void setPartId(String partId) {
-		this.partId = partId;
+	public void setPartName(String partName) {
+		this.partName = partName;
 	}
 
 	@Column(name = "part_description", length = 100)
@@ -84,7 +86,16 @@ public class SysPart implements java.io.Serializable {
 		this.partDescription = partDescription;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysPart")
+	@Column(name = "remark", length = 200)
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysPart")
 	public Set<SysTeacher> getSysTeachers() {
 		return this.sysTeachers;
 	}

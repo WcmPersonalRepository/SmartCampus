@@ -7,32 +7,30 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.security.core.GrantedAuthority;
 
 /**
  * SysRoles entity. @author MyEclipse Persistence Tools
  */
 @Entity
 @Table(name = "sys_roles", catalog = "smartcampus")
-public class SysRoles implements java.io.Serializable,GrantedAuthority {
+public class SysRoles implements java.io.Serializable {
 
 	// Fields
 
 	private Integer roleId;
+	private SysUsers sysUsers;
 	private String roleName;
 	private String roleDesc;
 	private Integer enable;
 	private Integer issys;
 	private String moduleId;
-	private Set<SysUsersRoles> sysUsersRoleses = new HashSet<SysUsersRoles>(0);
-	private Set<SysRolesMoudles> sysRolesMoudleses = new HashSet<SysRolesMoudles>(
-			0);
-	private Set<SysRolesAuthorities> sysRolesAuthoritieses = new HashSet<SysRolesAuthorities>(
+	private Set<SysAuthorities> sysAuthoritieses = new HashSet<SysAuthorities>(
 			0);
 
 	// Constructors
@@ -41,38 +39,39 @@ public class SysRoles implements java.io.Serializable,GrantedAuthority {
 	public SysRoles() {
 	}
 
-	/** minimal constructor */
-	public SysRoles(Integer roleId) {
-		this.roleId = roleId;
-	}
-
 	/** full constructor */
-	public SysRoles(Integer roleId, String roleName, String roleDesc,
+	public SysRoles(SysUsers sysUsers, String roleName, String roleDesc,
 			Integer enable, Integer issys, String moduleId,
-			Set<SysUsersRoles> sysUsersRoleses,
-			Set<SysRolesMoudles> sysRolesMoudleses,
-			Set<SysRolesAuthorities> sysRolesAuthoritieses) {
-		this.roleId = roleId;
+			Set<SysAuthorities> sysAuthoritieses) {
+		this.sysUsers = sysUsers;
 		this.roleName = roleName;
 		this.roleDesc = roleDesc;
 		this.enable = enable;
 		this.issys = issys;
 		this.moduleId = moduleId;
-		this.sysUsersRoleses = sysUsersRoleses;
-		this.sysRolesMoudleses = sysRolesMoudleses;
-		this.sysRolesAuthoritieses = sysRolesAuthoritieses;
+		this.sysAuthoritieses = sysAuthoritieses;
 	}
 
 	// Property accessors
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "ROLE_ID", unique = true, nullable = false, length = 100)
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "ROLE_ID", unique = true, nullable = false)
 	public Integer getRoleId() {
 		return this.roleId;
 	}
 
 	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ID")
+	public SysUsers getSysUsers() {
+		return this.sysUsers;
+	}
+
+	public void setSysUsers(SysUsers sysUsers) {
+		this.sysUsers = sysUsers;
 	}
 
 	@Column(name = "ROLE_NAME", length = 100)
@@ -120,44 +119,13 @@ public class SysRoles implements java.io.Serializable,GrantedAuthority {
 		this.moduleId = moduleId;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysRoles")
-	public Set<SysUsersRoles> getSysUsersRoleses() {
-		return this.sysUsersRoleses;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysRoles")
+	public Set<SysAuthorities> getSysAuthoritieses() {
+		return this.sysAuthoritieses;
 	}
 
-	public void setSysUsersRoleses(Set<SysUsersRoles> sysUsersRoleses) {
-		this.sysUsersRoleses = sysUsersRoleses;
+	public void setSysAuthoritieses(Set<SysAuthorities> sysAuthoritieses) {
+		this.sysAuthoritieses = sysAuthoritieses;
 	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysRoles")
-	public Set<SysRolesMoudles> getSysRolesMoudleses() {
-		return this.sysRolesMoudleses;
-	}
-
-	public void setSysRolesMoudleses(Set<SysRolesMoudles> sysRolesMoudleses) {
-		this.sysRolesMoudleses = sysRolesMoudleses;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysRoles")
-	public Set<SysRolesAuthorities> getSysRolesAuthoritieses() {
-		return this.sysRolesAuthoritieses;
-	}
-
-	public void setSysRolesAuthoritieses(
-			Set<SysRolesAuthorities> sysRolesAuthoritieses) {
-		this.sysRolesAuthoritieses = sysRolesAuthoritieses;
-	}
-
-	@Override
-	public String getAuthority() {
-		// TODO Auto-generated method stub
-		return roleName;
-	}
-
-	public void setAuthority(String authority) {
-		this.roleName = roleName;
-	}
-	
-	
 
 }

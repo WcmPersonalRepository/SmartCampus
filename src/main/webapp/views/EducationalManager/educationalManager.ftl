@@ -76,7 +76,6 @@
 		</ul>
 	</div>
   </div>
-  
   <#include "/PUBLIC/nav-bar.ftl"/>
 </div>
 <#include "/PUBLIC/js-noBoot.ftl"/>
@@ -96,6 +95,7 @@
 				transitionStyle: "fade"
 			});
 		});
+		
 	</script>
   </body>
 </html>

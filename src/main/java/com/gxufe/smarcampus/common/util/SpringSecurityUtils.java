@@ -21,7 +21,6 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 import org.springframework.util.Assert;
 
 import com.gxufe.smarcampus.models.SysRoles;
-import com.gxufe.smarcampus.models.SysUsersRoles;
 import com.gxufe.smarcampus.security.models.SpringSecurityUserAuth;
 
 
@@ -342,11 +341,11 @@ public class SpringSecurityUtils {
         SpringSecurityUserAuth springSecurityUserAuth = (SpringSecurityUserAuth) principal;
 
         List<String> roles = new ArrayList<String>();
-        Set<SysUsersRoles> SysUsersRoleses=springSecurityUserAuth.getSysUsersRoleses();
+        /*Set<SysUsersRoles> SysUsersRoleses=springSecurityUserAuth.getSysUsersRoleses();
         for (SysUsersRoles set:SysUsersRoleses) {
         	SysRoles sysRoles=set.getSysRoles();
         	roles.add(sysRoles.getRoleName());
-		}
+		}*/
         return roles;
     }
 

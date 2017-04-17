@@ -49,7 +49,7 @@ public class UserController {
 		sysUsers.setName("wuchaoming");
 		sysUsers.setPassword("456");
 		sysUsers.setUsername("ppp");
-		sysUsersService.addUser(sysUsers);
+		//sysUsersService.addUser(sysUsers);
 		return "index";
 	}
 	

@@ -1,4 +1,6 @@
 <#include "/PUBLIC/head.ftl"/>
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-rim-auto-match" content="none">
 <link rel="stylesheet" href="${base}/resources/css/owl.theme.css" type="text/css"></link>
 <link rel="stylesheet" href="${base}/resources/css/owl.carousel.css" type="text/css"></link>
 <link rel="stylesheet" href="${base}/resources/css/custom.css" type="text/css"></link>
@@ -126,8 +128,8 @@
 				</div>
 			</div>
 		</div>
-  </div>
   
+  </div>
   <#include "/PUBLIC/nav-bar.ftl"/>
 </div>
 <#include "/PUBLIC/js-noBoot.ftl"/>
@@ -160,5 +162,7 @@
 		clickGoHref('meetAdivce','http://www.gxufe.cn/www/myweb/level_2.cdi?typeid=0h');
 		clickGoHref('fastLink','http://www.gxufe.cn/www/myweb/level_2.cdi?typeid=07&typeid0=01');
 		clickGoHref('fastNav','http://www.gxufe.cn/www/myweb/level_2.cdi;jsessionid=tXK0wtNAoA5SvA1eW0UMHXnAMoGu6gV7taqODwdw.wwwnode03?typeid0=01&typeid=a6');
-	</script>
+	
+		
+		</script>
 </html>

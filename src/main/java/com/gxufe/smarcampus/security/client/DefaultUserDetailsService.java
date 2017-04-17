@@ -31,7 +31,6 @@ import com.gxufe.smarcampus.common.mapper.BeanMapper;
 import com.gxufe.smarcampus.common.util.PasswordEncoderFactoryBean;
 import com.gxufe.smarcampus.models.SysRoles;
 import com.gxufe.smarcampus.models.SysUsers;
-import com.gxufe.smarcampus.models.SysUsersRoles;
 import com.gxufe.smarcampus.repository.SysUsersDao;
 import com.gxufe.smarcampus.security.models.SpringSecurityUserAuth;
 import com.gxufe.smarcampus.security.models.UserAuthDTO;
@@ -66,11 +65,11 @@ public class DefaultUserDetailsService implements UserDetailsService {
         	List<String> roleNames=new ArrayList<>();
         	Collection<SysRoles> authorities=new ArrayList<SysRoles>();
         	if (sysUsers!=null) {
-        		Set<SysUsersRoles> sysUsersRolesesSet=sysUsers.getSysUsersRoleses();
-        		for (SysUsersRoles set:sysUsersRolesesSet) {
+        		//Set<SysUsersRoles> sysUsersRolesesSet=sysUsers.getSysRoles();
+        		/*for (SysUsersRoles set:sysUsersRolesesSet) {
         			roleNames.add(set.getSysRoles().getRoleName());
         			authorities.add(set.getSysRoles());
-				}
+				}*/
         		/*userAuthDto=new UserAuthDTO();
         		userAuthDto.setId(sysUsers.getUserId().toString());
         		userAuthDto.setPassword(sysUsers.getPassword());
@@ -80,7 +79,7 @@ public class DefaultUserDetailsService implements UserDetailsService {
 			}
 
             SpringSecurityUserAuth userAuthResult = new SpringSecurityUserAuth();
-            userAuthResult.setAuthorities(authorities);
+            //userAuthResult.setAuthorities(userAuthDto);
             if (sysUsers!=null) {
             	beanMapper.copy(sysUsers, userAuthResult);
 			}

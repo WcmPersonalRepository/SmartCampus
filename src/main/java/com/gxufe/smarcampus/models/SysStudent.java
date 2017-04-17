@@ -29,13 +29,13 @@ public class SysStudent implements java.io.Serializable {
 	private String studentNumber;
 	private String realName;
 	private String sex;
+	private String mobile;
 	private Timestamp intoSchoolYear;
 	private String reservedField1;
 	private String reservedField2;
 	private String reservedField3;
 	private String reservedField4;
-	private Integer userId;
-	private SysUsers sysUsers;
+	private Set<SysUsers> sysUserses = new HashSet<SysUsers>(0);
 
 	// Constructors
 
@@ -51,20 +51,19 @@ public class SysStudent implements java.io.Serializable {
 	/** full constructor */
 	public SysStudent(SysClass sysClass, String studentNumber, String realName,
 			String sex, Timestamp intoSchoolYear, String reservedField1,
-			String reservedField2, String reservedField3,
-			String reservedField4, Integer userId, SysUsers sysUsers
-			) {
+			String reservedField2, String reservedField3,String mobile,
+			String reservedField4, Set<SysUsers> sysUserses) {
 		this.sysClass = sysClass;
 		this.studentNumber = studentNumber;
 		this.realName = realName;
 		this.sex = sex;
+		this.mobile = mobile;
 		this.intoSchoolYear = intoSchoolYear;
 		this.reservedField1 = reservedField1;
 		this.reservedField2 = reservedField2;
 		this.reservedField3 = reservedField3;
 		this.reservedField4 = reservedField4;
-		this.userId = userId;
-		this.sysUsers = sysUsers;
+		this.sysUserses = sysUserses;
 	}
 
 	// Property accessors
@@ -101,6 +100,15 @@ public class SysStudent implements java.io.Serializable {
 	@Column(name = "real_name", length = 10)
 	public String getRealName() {
 		return this.realName;
+	}
+	
+	@Column(name = "mobile", length = 11)
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 
 	public void setRealName(String realName) {
@@ -161,24 +169,13 @@ public class SysStudent implements java.io.Serializable {
 		this.reservedField4 = reservedField4;
 	}
 
-	@Column(name = "user_id")
-	public Integer getUserId() {
-		return this.userId;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysStudent")
+	public Set<SysUsers> getSysUserses() {
+		return this.sysUserses;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setSysUserses(Set<SysUsers> sysUserses) {
+		this.sysUserses = sysUserses;
 	}
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	public SysUsers getSysUsers() {
-		return this.sysUsers;
-	}
-
-	public void setSysUsers(SysUsers sysUsers) {
-		this.sysUsers = sysUsers;
-	}
-
 
 }

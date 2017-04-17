@@ -25,15 +25,17 @@ public class SysTeacher implements java.io.Serializable {
 
 	private Integer id;
 	private SysPart sysPart;
-	private SysUsers sysUsers;
-	private SysCollege sysCollege;
 	private String workNumber;
-	private String realName;
 	private String sex;
 	private String reservedField1;
 	private String reservedField2;
 	private String reservedField3;
 	private String reservedField4;
+	private String realName;
+	private String positionName;
+	private String mobile;
+	private Set<SysUsers> sysUserses = new HashSet<SysUsers>(0);
+	private Set<SysLeaveInfo> sysLeaveInfos = new HashSet<SysLeaveInfo>(0);
 
 	// Constructors
 
@@ -42,20 +44,23 @@ public class SysTeacher implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public SysTeacher(SysPart sysPart, SysUsers sysUsers,
-			SysCollege sysCollege, String workNumber, String sex,String realName,
+	public SysTeacher(SysPart sysPart, String workNumber, String sex,
 			String reservedField1, String reservedField2,
-			String reservedField3, String reservedField4 ) {
+			String reservedField3, String reservedField4, String realName,
+			String positionName, String mobile, Set<SysUsers> sysUserses,
+			Set<SysLeaveInfo> sysLeaveInfos) {
 		this.sysPart = sysPart;
-		this.sysUsers = sysUsers;
-		this.sysCollege = sysCollege;
 		this.workNumber = workNumber;
 		this.sex = sex;
-		this.realName = realName;
 		this.reservedField1 = reservedField1;
 		this.reservedField2 = reservedField2;
 		this.reservedField3 = reservedField3;
 		this.reservedField4 = reservedField4;
+		this.realName = realName;
+		this.positionName = positionName;
+		this.mobile = mobile;
+		this.sysUserses = sysUserses;
+		this.sysLeaveInfos = sysLeaveInfos;
 	}
 
 	// Property accessors
@@ -80,26 +85,6 @@ public class SysTeacher implements java.io.Serializable {
 		this.sysPart = sysPart;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "USER_ID")
-	public SysUsers getSysUsers() {
-		return this.sysUsers;
-	}
-
-	public void setSysUsers(SysUsers sysUsers) {
-		this.sysUsers = sysUsers;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "college_id")
-	public SysCollege getSysCollege() {
-		return this.sysCollege;
-	}
-
-	public void setSysCollege(SysCollege sysCollege) {
-		this.sysCollege = sysCollege;
-	}
-
 	@Column(name = "work_number", length = 20)
 	public String getWorkNumber() {
 		return this.workNumber;
@@ -107,15 +92,6 @@ public class SysTeacher implements java.io.Serializable {
 
 	public void setWorkNumber(String workNumber) {
 		this.workNumber = workNumber;
-	}
-	
-	@Column(name = "real_name", length = 20)
-	public String getRealName() {
-		return realName;
-	}
-
-	public void setRealName(String realName) {
-		this.realName = realName;
 	}
 
 	@Column(name = "sex", length = 2)
@@ -163,5 +139,49 @@ public class SysTeacher implements java.io.Serializable {
 		this.reservedField4 = reservedField4;
 	}
 
+	@Column(name = "real_name", length = 50)
+	public String getRealName() {
+		return this.realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
+	@Column(name = "position_name", length = 20)
+	public String getPositionName() {
+		return this.positionName;
+	}
+
+	public void setPositionName(String positionName) {
+		this.positionName = positionName;
+	}
+
+	@Column(name = "mobile", length = 11)
+	public String getMobile() {
+		return this.mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysTeacher")
+	public Set<SysUsers> getSysUserses() {
+		return this.sysUserses;
+	}
+
+	public void setSysUserses(Set<SysUsers> sysUserses) {
+		this.sysUserses = sysUserses;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysTeacher")
+	public Set<SysLeaveInfo> getSysLeaveInfos() {
+		return this.sysLeaveInfos;
+	}
+
+	public void setSysLeaveInfos(Set<SysLeaveInfo> sysLeaveInfos) {
+		this.sysLeaveInfos = sysLeaveInfos;
+	}
 
 }

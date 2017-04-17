@@ -25,11 +25,11 @@ public class SysTeachBuilding implements java.io.Serializable {
 
 	private Integer id;
 	private SysCampus sysCampus;
-	private String teachBuildingName;
 	private Integer teachBuildingFloor;
-	private Integer teachBuildingNumber;
-	private String remark;
+	private String teachBuildingName;
+	private String teachBuildingNumber;
 	private Integer teachBuildingType;
+	private String remark;
 	private Set<SysTeachBuildingApplyRecord> sysTeachBuildingApplyRecords = new HashSet<SysTeachBuildingApplyRecord>(
 			0);
 
@@ -40,18 +40,16 @@ public class SysTeachBuilding implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public SysTeachBuilding(SysCampus sysCampus,
-			String teachBuildingName, Integer teachBuildingFloor,
-			Integer teachBuildingNumber, String remark,
-			Integer teachBuildingType,
-			Set<SysTeachBuildingApplyRecord> sysTeachBuildingApplyRecords
-			) {
+	public SysTeachBuilding(SysCampus sysCampus, Integer teachBuildingFloor,
+			String teachBuildingName, String teachBuildingNumber,
+			Integer teachBuildingType, String remark,
+			Set<SysTeachBuildingApplyRecord> sysTeachBuildingApplyRecords) {
 		this.sysCampus = sysCampus;
-		this.teachBuildingName = teachBuildingName;
 		this.teachBuildingFloor = teachBuildingFloor;
+		this.teachBuildingName = teachBuildingName;
 		this.teachBuildingNumber = teachBuildingNumber;
-		this.remark = remark;
 		this.teachBuildingType = teachBuildingType;
+		this.remark = remark;
 		this.sysTeachBuildingApplyRecords = sysTeachBuildingApplyRecords;
 	}
 
@@ -77,15 +75,6 @@ public class SysTeachBuilding implements java.io.Serializable {
 		this.sysCampus = sysCampus;
 	}
 
-	@Column(name = "teach_building_name", length = 50)
-	public String getTeachBuildingName() {
-		return this.teachBuildingName;
-	}
-
-	public void setTeachBuildingName(String teachBuildingName) {
-		this.teachBuildingName = teachBuildingName;
-	}
-
 	@Column(name = "teach_building_floor")
 	public Integer getTeachBuildingFloor() {
 		return this.teachBuildingFloor;
@@ -95,22 +84,22 @@ public class SysTeachBuilding implements java.io.Serializable {
 		this.teachBuildingFloor = teachBuildingFloor;
 	}
 
+	@Column(name = "teach_building_name", length = 50)
+	public String getTeachBuildingName() {
+		return this.teachBuildingName;
+	}
+
+	public void setTeachBuildingName(String teachBuildingName) {
+		this.teachBuildingName = teachBuildingName;
+	}
+
 	@Column(name = "teach_building_number")
-	public Integer getTeachBuildingNumber() {
+	public String getTeachBuildingNumber() {
 		return this.teachBuildingNumber;
 	}
 
-	public void setTeachBuildingNumber(Integer teachBuildingNumber) {
+	public void setTeachBuildingNumber(String teachBuildingNumber) {
 		this.teachBuildingNumber = teachBuildingNumber;
-	}
-
-	@Column(name = "remark", length = 200)
-	public String getRemark() {
-		return this.remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
 	}
 
 	@Column(name = "teach_building_type")
@@ -122,7 +111,16 @@ public class SysTeachBuilding implements java.io.Serializable {
 		this.teachBuildingType = teachBuildingType;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysTeachBuilding")
+	@Column(name = "remark", length = 100)
+	public String getRemark() {
+		return this.remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysTeachBuilding")
 	public Set<SysTeachBuildingApplyRecord> getSysTeachBuildingApplyRecords() {
 		return this.sysTeachBuildingApplyRecords;
 	}
@@ -131,6 +129,5 @@ public class SysTeachBuilding implements java.io.Serializable {
 			Set<SysTeachBuildingApplyRecord> sysTeachBuildingApplyRecords) {
 		this.sysTeachBuildingApplyRecords = sysTeachBuildingApplyRecords;
 	}
-
 
 }

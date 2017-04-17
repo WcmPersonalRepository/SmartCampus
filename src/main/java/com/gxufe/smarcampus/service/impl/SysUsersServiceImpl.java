@@ -18,10 +18,4 @@ import com.gxufe.smarcampus.service.SysUsersService;
 @Service
 public class SysUsersServiceImpl extends BaseServicImpl<SysUsers, Integer> implements
 		SysUsersService {
-	@Autowired
-	public SysUsersDao sysUsersDao;
-	
-	public void addUser(SysUsers sysUsers){
-		sysUsersDao.save(sysUsers);
-	}
 }
