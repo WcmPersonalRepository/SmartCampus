@@ -14,5 +14,7 @@ import com.gxufe.smarcampus.repository.SysRolesDao;
 import com.gxufe.smarcampus.repository.SysStudentDao;
 @Repository
 public class SysStudentDaoImpl extends BaseDaoImpl<SysStudent, Integer> implements SysStudentDao {
-
+	public SysStudentDaoImpl() {
+		this.entityClass = SysStudent.class;
+	}
 }

@@ -1,6 +1,6 @@
 /* appȫ����ʽ */
 .apptitle{background-color: #3399ff;margin-left: 0;}
-body{font-family:'微软雅黑';font-size: 16px;}
+body{font-family:'微软雅黑';}
 .content{margin-bottom: 55px;}
 .title-color{color: white;}
 .click:ACTIVE{background-color:#ddd; }
@@ -12,10 +12,10 @@ ul li{list-style: none;}
 .special_subject{width: 100%;background-color: white;}
 .right_line{border-right:#ddd solid 1px; }
 .right_bottom{border-bottom: #ddd solid 1px; }
-.item_list{height: 145px;}
-.item_list li{float: left;width: 33.33%;text-align: center;padding-top: 2%;}
+.item_list{}
+.item_list li{float: left;width: 33.33%;text-align: center;}
 .item_list li:ACTIVE{background-color: #ddd;}
-.item_list li span{float: left;padding: 3% 20%;}
+.item_list li span{float: left;padding: 3% 20%;margin-top: 8%;}
 .item_list li p{font-family:'微软雅黑'; font-size: 1em;}
 .item_list li img{width: 100%;}
 .campus_activities{width: 100%;background-color: white;margin-top: 20px;padding: 10px 10px;}
@@ -26,14 +26,22 @@ ul li{list-style: none;}
 
 
 /* 我的 页面样式 */
-.head-img{text-align: center;}
+.head-img{
+	text-align: center;
+	position: absolute;
+    top: 5%;
+    width:30%;
+ }
 .head-img img{width: 5em;height: 5em;}
-.head-img .img{width: 5em;height: 5em;border-radius:50%;background-color:rgb(231,231,231);position: relative;margin: auto;margin-top: 5%;}
+.head-img .img{width: 5em;height: 5em;border-radius:50%;background-color:white;position: relative;margin: auto;margin-top: 5%;}
 .options{padding: 20px 20px;}
-.options-item{margin-top: 20px;}
-.options-item img{width: 1.5em;position: relative;margin: auto;}
-.col-90{line-height: 1.5em;padding-left: 5px;}
+.options-item{height: 3rem;line-height: 3rem;}
+.options-item img{width: 1.5em;position: relative;margin: auto;top:0.4em;}
+.col-80{padding-left: 5%;}
 .row{margin-left: 0;}
+
+/** 管理 */
+
 
 
 

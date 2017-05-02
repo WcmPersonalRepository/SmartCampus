@@ -1,12 +1,46 @@
 /* appȫ����ʽ */
 .apptitle{background-color: #3399ff;margin-left: 0;}
-body{font-family:'微软雅黑';}
+body{font-family:'微软雅黑';font-size:0.9rem;}
 .content{margin-bottom: 55px;}
+a{color:gray;}
 .title-color{color: white;}
 .click:ACTIVE{background-color:#ddd; }
 ul{margin: 0;padding: 0;}
 .line_bottom{border-bottom: #eee solid 1px; }
 ul li{list-style: none;}
+.no-bottom{margin-bottom: 0;}
+/* 背景颜色 */
+.blue-background-color{background-color: #0894ec;}
+.white-bg-color{background-color: white;}
+/* 字体颜色 */
+.white-font-color{color:white;}
+.gray-font-color{color:gray;}
+.black-font-color{color:black;}
+.blue-font-color{color:#0894ec;}
+/* 边框线条 */
+.border-right{border-right: 1px solid #efeff4;}
+.border-left{border-left: 1px solid #efeff4;}
+.border-top{border-top: 1px solid #efeff4;}
+.border-bottom{border-bottom: 1px solid #efeff4;}
+
+/** 管理 */
+.owl-carousel img{width: 100%;float: left;}
+.owl-carousel a{float: left;}
+.owl-tip{float: left;margin-top: -40px;color: white;padding-left: 20px;background-color: rgba(0,0,0,0.5);width: 100%;height: 40px;line-height: 40px;}
+.recommended{width: 100%;background-color: white;padding: 5% 5%;}
+.recommended-title .col-90{line-height: 1.9em;}
+.recommended-title img{width: 1.5em;}
+.recommended-item img{width: 100%;float: left;}
+.recommended-item{margin-top: 15px;}
+.row{margin-left: -4%;}
+.recommended-item .col-50 div{float: left;margin-top: -30px;color: white;padding-left: 20px;background-color: rgba(0,0,0,0.5);width: 100%;height: 30px;line-height: 30px;}
+.manager-item{height:170px;width: 45%;;float: left;text-align: center;margin: 5% 2.5%;}
+.manager-item div{position: relative;margin: auto;top:20%;}
+.online-application{background-color: rgb(140,288,250);}
+.apply-classroom{background-color: rgb(101,239,130);}
+.manager-item-logo img{width: 40%;}
+.car-service{background-color: rgb(240,233,63);}
+.other-service{background-color: rgb(238,162,102);}
 
 /* 首页样式 */
 .special_subject{width: 100%;background-color: white;}
@@ -40,9 +74,55 @@ ul li{list-style: none;}
 .col-80{padding-left: 5%;}
 .row{margin-left: 0;}
 
-/** 管理 */
 
 
+/**部门 */
+.items{background-color: white;padding: 0 3%;}
+.item{height: 3rem;line-height: 2.89rem;text-overflow:ellipsis;}
+.item div{float: left; white-space: nowrap;}
+.item-content-big-font{width: 10%;}
+.blue-circle{width: 1.5rem;height:1.5rem;border-radius:50%;position: relative; top: 0.75rem;text-align: center;line-height: 1.5rem; }
+.item-content{width: 70%;white-space: nowrap;}
+.item-content-right-logo{width: 20%;text-align: right; }
+.search-input{height: 1.5rem;width:50%; position: relative;margin: auto;background: white;border-radius:5px;top:0.35rem;display: none;transition: all 0.3s;}
+.search-input input{width: 100%;height: 100%;border: none;text-indent: 1rem;}
+.search-text{width: 10%;float: right;}
+.search-text{position: absolute;top:0.5rem;right:0.5rem;color: white;display: none;}
+.item-phone-book{width: 100%;height: 3.5rem;background-color: white;padding: 0 3%;}
+.item-phone-book div{float: left;}
+.phone-book-department{width: 80%;}
+.phone-book-path{width: 100%;font-size: 0.7rem;text-indent: 2rem;color:gray;white-space: nowrap;}
+.phone-book-department-main{width: 100%;font-size: 1rem;line-height: 2rem;vertical-align: middle;}
 
+/* 科室 */
+.department-title{background: white;height: 3rem;padding: 1rem 1rem;}
+.department-title-text{width: 100%;height: 100%;border-left: 2px solid #3399ff;line-height: 1rem;text-indent: 0.5rem;font-size: 1rem;}
+.item-content-big-font img{height: 0.8rem;width: 0.8rem;}
 
+/* 通讯录 */
+.phoneName,.call{width: 20%;}
+.phone{width: 60%;text-align: right;}
+.call{text-align: right;}
+.personal-img{width: 100%;height: auto;padding: 0;background-color: white;}
+.personal-img img{width: 100%;margin: 0;}
+.item-content-left{width: 50%;}
+.item-content-right{width: 50%;text-align: right;}
+.primary-btn{background-color:#3399ff;border: none;padding: 0.4rem 1.5rem;border-radius:5px;color: white; }
+.primary-btn:ACTIVE {background-color: #235d97;	}
+.long-btn{width: 90%;margin: 1rem 5%;}
 
+/* 校方认证 */
+.campus-authentication-info{padding: 0 10%;}
+.item-input{height: 2rem;width: 100%;border: 1px solid gainsboro;line-height: 1.8rem;margin-top: 1rem;}
+.item-input div{float: left;}
+.item-input-content{width: 100%;}
+.item-input-logo{width: 10%;position: absolute;right: 2rem;top:1rem;z-index: 1;}
+.item-input-content input{width: 100%;border: none;text-indent: 1rem;z-index: 10;}
+
+/* 设置密码*/
+.settingPwd-items{width: 100%;padding: 0 5%;}
+.settingPwd-item{height: 3rem;line-height: 3rem;}
+.settingPwd-item div{float: left;}
+.settingPwd-item-left{width:40%;}
+.settingPwd-item-right{width:60%;}
+.settingPwd-item-right input{width: 100%;text-align: right;border: none;}

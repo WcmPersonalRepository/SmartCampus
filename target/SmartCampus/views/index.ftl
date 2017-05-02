@@ -1,4 +1,6 @@
 <#include "/PUBLIC/head.ftl"/>
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-rim-auto-match" content="none">
 <link rel="stylesheet" href="${base}/resources/css/owl.theme.css" type="text/css"></link>
 <link rel="stylesheet" href="${base}/resources/css/owl.carousel.css" type="text/css"></link>
 <link rel="stylesheet" href="${base}/resources/css/custom.css" type="text/css"></link>
@@ -28,16 +30,16 @@
 		</div>
 		
 		<div class="special_subject">
-			<ul class="item_list right_bottom">
-				<li class="item right_line">
+			<ul class="item_list right_bottom row">
+				<li id="advice" class="item right_line">
 					<span>
-						<a href="#">
+						<a href="">
 							<img src="${base}/resources/images/index/advice.png"/>
 						</a>
 					</span>
-					<p>通知广告</p>
+					<p>通知公告</p>
 				</li>
-				<li class="item right_line">
+				<li id='news' class="item right_line">
 					<span>
 						<a href="#">
 							<img src="${base}/resources/images/index/news.png"/>
@@ -45,7 +47,7 @@
 					</span>
 					<p>广才新闻</p>
 				</li>
-				<li class="item">
+				<li id='jiangtan' class="item">
 					<span>
 						<a href="#">
 							<img src="${base}/resources/images/index/platform.png"/>
@@ -54,16 +56,16 @@
 					<p>莲湖讲坛</p>
 				</li>
 			</ul>
-			<ul class="item_list">
-				<li class="item right_line">
+			<ul class="item_list row">
+				<li id='meetAdivce' class="item right_line">
 					<span>
 						<a href="#">
-							<img src="${base}/resources/images/index/hot.png"/>
+							<img src="${base}/resources/images/index/conference.png"/>
 						</a>
 					</span>
-					<p>热点专题</p>
+					<p>会议通知</p>
 				</li>
-				<li class="item right_line">
+				<li id='fastLink' class="item right_line">
 					<span>
 						<a href="#">
 							<img src="${base}/resources/images/index/fast_link.png"/>
@@ -71,7 +73,7 @@
 					</span>
 					<p>快速链接</p>
 				</li>
-				<li class="item">
+				<li id="fastNav" class="item">
 					<span>
 						<a href="#">
 							<img src="${base}/resources/images/index/fast_nav.png"/>
@@ -126,8 +128,8 @@
 				</div>
 			</div>
 		</div>
-  </div>
   
+  </div>
   <#include "/PUBLIC/nav-bar.ftl"/>
 </div>
 <#include "/PUBLIC/js-noBoot.ftl"/>
@@ -153,5 +155,14 @@
 				goHref("showVideo");
 			});
 		});
-	</script>
+
+		clickGoHref('advice','http://www.gxufe.cn/www/myweb/level_2.cdi;jsessionid=2OFO1RFfR-ZsKmA4xt17aJyLXmTid_7HmKOr6Nkb.wwwnode03?typeid=02');
+		clickGoHref('news','http://www.gxufe.cn/www/myweb/level_2.cdi?typeid=06');
+		clickGoHref('jiangtan','http://www.gxufe.cn/www/myweb/level_2.cdi?typeid=01&typeid0=01');
+		clickGoHref('meetAdivce','http://www.gxufe.cn/www/myweb/level_2.cdi?typeid=0h');
+		clickGoHref('fastLink','http://www.gxufe.cn/www/myweb/level_2.cdi?typeid=07&typeid0=01');
+		clickGoHref('fastNav','http://www.gxufe.cn/www/myweb/level_2.cdi;jsessionid=tXK0wtNAoA5SvA1eW0UMHXnAMoGu6gV7taqODwdw.wwwnode03?typeid0=01&typeid=a6');
+	
+		
+		</script>
 </html>

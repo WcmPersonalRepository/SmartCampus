@@ -15,4 +15,7 @@ import com.gxufe.smarcampus.repository.PersistentLoginsDao;
 @Repository
 public class PersistentLoginsDaoImpl extends BaseDaoImpl<PersistentLogins, String> implements
 		PersistentLoginsDao {
+	public PersistentLoginsDaoImpl() {
+		this.entityClass = PersistentLogins.class;
+	}
 }

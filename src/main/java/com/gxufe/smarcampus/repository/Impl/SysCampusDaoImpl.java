@@ -12,5 +12,7 @@ import com.gxufe.smarcampus.repository.SysCampusDao;
 public class SysCampusDaoImpl extends BaseDaoImpl<SysCampus, Integer> implements
  SysCampusDao {
 	
-
+	public SysCampusDaoImpl() {
+		this.entityClass = SysCampus.class;
+	}
 }

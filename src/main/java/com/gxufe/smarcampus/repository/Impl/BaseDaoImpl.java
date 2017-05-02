@@ -32,8 +32,7 @@ import com.gxufe.smarcampus.repository.BaseDao;
 public class BaseDaoImpl<T, ID extends Serializable> extends HibernateDaoSupport implements BaseDao<T, ID> {
 
 	private Logger logger = Logger.getLogger(BaseDaoImpl.class);  
-	  
-    protected Class<T> entityClass;
+	protected Class<T> entityClass;
     
    /* @Autowired
     private HibernateTemplate hibernateTemplate;*/
@@ -55,15 +54,24 @@ public class BaseDaoImpl<T, ID extends Serializable> extends HibernateDaoSupport
 		// TODO Auto-generated constructor stub
 	}
     
+/*    protected Class getEntityClass() {  
+          
+        return this.entityClass;  
+    }  */
+
     protected Class getEntityClass() {  
         if (entityClass == null) {  
             entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];  
             logger.debug("T class = " + entityClass.getName());  
         }  
         return entityClass;  
-    }  
-	
-    public void saveOrUpdate(T t) throws DataAccessException {  
+    } 
+  
+  /*  public void setEntityClass(Class entityClass) {
+		this.entityClass = entityClass;
+	}*/
+
+	public void saveOrUpdate(T t) throws DataAccessException {  
         this.getHibernateTemplate().saveOrUpdate(t);  
     }  
   

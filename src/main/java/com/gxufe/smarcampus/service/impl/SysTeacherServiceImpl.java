@@ -13,6 +13,7 @@ import com.gxufe.smarcampus.common.PaginationSupport;
 import com.gxufe.smarcampus.models.SysStudent;
 import com.gxufe.smarcampus.models.SysTeacher;
 import com.gxufe.smarcampus.models.SysUsers;
+import com.gxufe.smarcampus.repository.SysTeacherDao;
 import com.gxufe.smarcampus.repository.SysUsersDao;
 import com.gxufe.smarcampus.repository.Impl.SysUsersDaoImpl;
 import com.gxufe.smarcampus.service.SysStudentService;
@@ -22,4 +23,24 @@ import com.gxufe.smarcampus.service.SysUsersService;
 @Service
 public class SysTeacherServiceImpl extends BaseServicImpl<SysTeacher, Integer> implements
 SysTeacherService {
+
+	@Autowired
+	public SysTeacherDao sysTeacherDao;
+	
+	@Override
+	public SysTeacher findTeacherByWorkNumber(String userNumber) {
+		List<SysTeacher> list=sysTeacherDao.find("from SysTeacher where workNumber=?", userNumber);
+		if (list.size()>0) {
+			
+			return list.get(0);
+		}else{
+			return null;
+		}
+	}
+
+	@Override
+	public SysTeacher findSysTeacherById(Integer id) {
+		// TODO Auto-generated method stub
+		return sysTeacherDao.load(id);
+	}
 }

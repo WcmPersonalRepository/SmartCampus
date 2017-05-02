@@ -102,7 +102,7 @@ public class SysStudent implements java.io.Serializable {
 		return this.realName;
 	}
 	
-	@Column(name = "mobile", length = 11)
+	@Column(name = "mobile", length = 15)
 	public String getMobile() {
 		return mobile;
 	}

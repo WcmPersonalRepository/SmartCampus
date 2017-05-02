@@ -1,13 +1,8 @@
 package com.gxufe.smarcampus.common.util;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mysql.fabric.xmlrpc.base.Array;
 /**
  * Json转换工具类
  * 对jackson二次封装

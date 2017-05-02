@@ -13,6 +13,7 @@
 	<option value="1">导入专业信息</option>
 	<option value="2">导入班级信息</option>
 	<option value="3">导入学生信息</option>
+	<option value="7">导入通讯录信息</option>
 </select>
 <form id="form" action="importProfessionalInfo" method='POST' enctype="multipart/form-data">  
           <input type="file" name="file"/>
@@ -32,6 +33,7 @@
 		case '4':form.action='importOrganizationInfo'; break;
 		case '5':form.action='importPartInfo'; break;
 		case '6':form.action='importTeacherInfo'; break;
+		case '7':form.action='importPhoneBookInfo'; break;
 
 		default:
 			break;

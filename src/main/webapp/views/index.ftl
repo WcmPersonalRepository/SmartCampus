@@ -11,6 +11,7 @@
  </head>
  
  <body>
+ <div class="page-group">
   <div class="page">
   <header class="bar bar-nav apptitle">
     <!-- <a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>
@@ -31,7 +32,7 @@
 		
 		<div class="special_subject">
 			<ul class="item_list right_bottom row">
-				<li id="advice" class="item right_line">
+				<li id="advice" class=" right_line">
 					<span>
 						<a href="">
 							<img src="${base}/resources/images/index/advice.png"/>
@@ -39,7 +40,7 @@
 					</span>
 					<p>通知公告</p>
 				</li>
-				<li id='news' class="item right_line">
+				<li id='news' class="right_line">
 					<span>
 						<a href="#">
 							<img src="${base}/resources/images/index/news.png"/>
@@ -47,7 +48,7 @@
 					</span>
 					<p>广才新闻</p>
 				</li>
-				<li id='jiangtan' class="item">
+				<li id='jiangtan' class="">
 					<span>
 						<a href="#">
 							<img src="${base}/resources/images/index/platform.png"/>
@@ -57,7 +58,7 @@
 				</li>
 			</ul>
 			<ul class="item_list row">
-				<li id='meetAdivce' class="item right_line">
+				<li id='meetAdivce' class=" right_line">
 					<span>
 						<a href="#">
 							<img src="${base}/resources/images/index/conference.png"/>
@@ -65,7 +66,7 @@
 					</span>
 					<p>会议通知</p>
 				</li>
-				<li id='fastLink' class="item right_line">
+				<li id='fastLink' class=" right_line">
 					<span>
 						<a href="#">
 							<img src="${base}/resources/images/index/fast_link.png"/>
@@ -73,7 +74,7 @@
 					</span>
 					<p>快速链接</p>
 				</li>
-				<li id="fastNav" class="item">
+				<li id="fastNav" class="">
 					<span>
 						<a href="#">
 							<img src="${base}/resources/images/index/fast_nav.png"/>
@@ -133,6 +134,7 @@
   <#include "/PUBLIC/nav-bar.ftl"/>
 </div>
 <#include "/PUBLIC/js-noBoot.ftl"/>
+</div>
 <script type="text/javascript" src="${base}/resources/js/owl.carousel.min.js"></script>
 
   </body>

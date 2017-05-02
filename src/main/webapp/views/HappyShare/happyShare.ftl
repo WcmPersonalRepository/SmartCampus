@@ -18,6 +18,7 @@
  </head>
  
  <body>
+ <div class="page-group">
   <div class="page">
   <header class="bar bar-nav apptitle">
     <!-- <a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>
@@ -80,12 +81,24 @@
 			</div>
 			<div class="recommended-item row">
 				<div class="col-50">
-					<img alt="" src="${base}/resources/images/happyShare/share_03.png">
+					<img alt="" src="${base}/resources/images/happyShare/electricity.png">
 					<div>障碍保修</div>
 				</div>
 				<div class="col-50">
-					<img alt="" src="${base}/resources/images/happyShare/share_04.png">
+					<img alt="" src="${base}/resources/images/happyShare/expressage.png">
 					<div>智慧校园快递</div>
+				</div>
+			</div>
+			<div class="recommended-item row">
+					<div class="col-50" >
+						<a href="happyShare/toPart" data-no-cache="true">
+							<img alt="" src="${base}/resources/images/happyShare/phoneBook.png">
+							<div>通讯录</div>
+						</a>
+					</div>
+				<div class="col-50">
+					<img alt="" src="${base}/resources/images/happyShare/share_06.png">
+					<div>常用表格下载</div>
 				</div>
 			</div>
 			<div class="recommended-item row">
@@ -94,21 +107,16 @@
 					<div style="background-color: rgba(34,168,253,0.5);">校园卡充值<span style="float: right;margin-right: 20px;">集成中</span></div>
 				</div>
 				<div class="col-50">
-					<img alt="" src="${base}/resources/images/happyShare/share_06.png">
-					<div>精品课程</div>
+					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
+					<div style="background-color: rgba(34,168,253,0.5);">精品课程<span style="float: right;margin-right: 20px;">集成中</span></div>
 				</div>
 			</div>
+			
 			<div class="recommended-item row">
-				<div class="col-50">
+			<div class="col-50">
 					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
 					<div style="background-color: rgba(34,168,253,0.5);">考研在线<span style="float: right;margin-right: 20px;">集成中</span></div>
 				</div>
-				<div class="col-50">
-					<img alt="" src="${base}/resources/images/happyShare/share_06.png">
-					<div>常用表格下载</div>
-				</div>
-			</div>
-			<div class="recommended-item row">
 				<div class="col-50">
 					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
 					<div style="background-color: rgba(34,168,253,0.5);">更多分享<span style="float: right;margin-right: 20px;">集成中</span></div>
@@ -120,6 +128,7 @@
   </div>
   
   <#include "/PUBLIC/nav-bar.ftl"/>
+</div>
 </div>
 <#include "/PUBLIC/js-noBoot.ftl"/>
 <script type="text/javascript" src="${base}/resources/js/owl.carousel.min.js"></script>
@@ -138,6 +147,12 @@
 				transitionStyle: "fade"
 			});
 		});
+
+		
+		$("#phoneBook").click(function(){
+			$.router.load('phoneBook', true);
+		});
+		//clickGoHref("phoneBook","happyShare/toPhoneBook");
 	</script>
   </body>
 </html>

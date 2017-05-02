@@ -28,6 +28,7 @@ import com.gxufe.smarcampus.models.SysClass;
 import com.gxufe.smarcampus.models.SysCollege;
 import com.gxufe.smarcampus.models.SysOrganization;
 import com.gxufe.smarcampus.models.SysPart;
+import com.gxufe.smarcampus.models.SysPhoneBook;
 import com.gxufe.smarcampus.models.SysProfessional;
 import com.gxufe.smarcampus.models.SysStudent;
 import com.gxufe.smarcampus.models.SysTeacher;
@@ -35,6 +36,7 @@ import com.gxufe.smarcampus.service.SysClassService;
 import com.gxufe.smarcampus.service.SysCollegeService;
 import com.gxufe.smarcampus.service.SysOrganizationService;
 import com.gxufe.smarcampus.service.SysPartService;
+import com.gxufe.smarcampus.service.SysPhoneBookService;
 import com.gxufe.smarcampus.service.SysProfessionalService;
 import com.gxufe.smarcampus.service.SysStudentService;
 import com.gxufe.smarcampus.service.SysTeacherService;
@@ -59,6 +61,8 @@ public class UsersController {
 	public SysOrganizationService sysOrganizationService;
 	@Autowired
 	public SysPartService sysPartService;
+	@Autowired
+	public SysPhoneBookService sysPhoneBookService;
 	
 	/**
 	 * 跳转导入专业信息
@@ -86,7 +90,7 @@ public class UsersController {
 		String suffix=fileName.substring(fileName.lastIndexOf(".")+1);
 		try {
 			List<String[]> list=ParseExcel.rosolveFile(file.getInputStream(), suffix, 1);
-			for (int i = 0; i < list.size(); i++) {
+			for (int i = 2; i < list.size(); i++) {
 				String[] vaules=list.get(i);
 				SysProfessional sysProfessional=new SysProfessional();
 				List<SysCollege> listSysCollege=sysCollegeService.findSysCollegeByName(vaules[1]);
@@ -257,6 +261,7 @@ public class UsersController {
 				}
 				
 				sysTeacher.setMobile(values[4]);
+				sysTeacher.setWorkNumber(values[0]);
 				sysTeacher.setPositionName(values[3]);
 				sysTeacher.setRealName(values[1]);
 				sysTeacher.setSysPart(listPart.get(0));
@@ -322,7 +327,7 @@ public class UsersController {
 				sysStudent.setRealName(values[2]);
 				sysStudent.setSex(values[3]);
 				sysStudent.setSysClass(listClass.get(0));
-				sysStudent.setMobile(values[5]);
+				sysStudent.setMobile(values[9]);
 				
 				List<SysStudent> listStudent=sysStudentService.findObjectByHQL("from SysStudent c where c.studentNumber=?",values[0]);
 				if (null==listStudent||listStudent.size()<1) {
@@ -338,6 +343,64 @@ public class UsersController {
 		}
 		
 		model.addAttribute("msg", "数据导入成功!");
+		return "backstage/importProfessionalInfo";
+	}
+	
+	/**
+	 * 导入通讯录信息
+	 * @author wcm
+	 * @param HttpServletRequest
+	 * @param Model
+	 * @return String 
+	 * @throws ParseException 
+	 * */
+	@RequestMapping(value="importPhoneBookInfo")
+	public String importPhoneBookInfo(@RequestParam("file") CommonsMultipartFile file,Model model) throws ParseException{
+		String fileName=file.getOriginalFilename();
+		String suffix=fileName.substring(fileName.lastIndexOf(".")+1);
+		String html="";
+		try {
+			List<String[]> list=ParseExcel.rosolveFile(file.getInputStream(), suffix, 1);
+			for (int i = 2; i < list.size(); i++) {
+				String[] values=list.get(i);
+				if (!(null==values[0]||"".equals(values[0]))) {
+					
+					SysPhoneBook sysPhoneBook=new SysPhoneBook();
+					
+					values[0]=values[0].trim();
+					values[1]=values[1].trim();
+					values[3]=values[3].trim();
+					List<SysPart> listPart=sysPartService.findObjectByHQL("from SysPart c where c.partName like ?","%"+values[0]+"%");
+					if (null==listPart||listPart.size()<1) {
+						Map<String, String> map=new HashMap<String, String>();
+						model.addAttribute("msg", "对不起您导入的数据表中的第    "+(i+1)+"  行  第  "+1+" 列在数据库中没有该部门的记录");
+						return "backstage/importProfessionalInfo";
+					}
+					sysPhoneBook.setSysPart(listPart.get(0));
+					sysPhoneBook.setDepartment(values[1]);
+					sysPhoneBook.setRealName(values[2]);
+					sysPhoneBook.setPhone(values[3]);
+					String[] parms={values[2],values[3],values[1]};
+					
+					List<SysPhoneBook> listStudent=sysPhoneBookService.findObjectByHQL("from SysPhoneBook c where c.realName=? and c.phone=? and c.department=?",parms);
+					if (null==listStudent||listStudent.size()<1) {
+						sysPhoneBookService.saveOrUpdate(sysPhoneBook);
+					}
+					if (listStudent!=null&&listStudent.size()>0) {
+						html+=listStudent.get(0).getDepartment()+"\t"+listStudent.get(0).getRealName()+"<br>";
+					}
+						
+				}
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("msg", "数据导入成功!<br>"+html);
 		return "backstage/importProfessionalInfo";
 	}
 }

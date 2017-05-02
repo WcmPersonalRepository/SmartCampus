@@ -48,6 +48,7 @@
 			class="com.gxufe.smarcampus.models.SysTeachBuildingApplyRecord" />
 		<mapping class="com.gxufe.smarcampus.models.SysLeaveInfoRecord" />
 		<mapping class="com.gxufe.smarcampus.models.SysOrganization" />
+		<mapping class="com.gxufe.smarcampus.models.SysPhoneBook" />
 
 	</session-factory>
 

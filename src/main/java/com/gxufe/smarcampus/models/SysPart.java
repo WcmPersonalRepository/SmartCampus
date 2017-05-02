@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import net.sourceforge.pinyin4j.PinyinHelper;
+import net.sourceforge.pinyin4j.PinyinHelper;  
 /**
  * SysPart entity. @author MyEclipse Persistence Tools
  */
@@ -29,6 +31,7 @@ public class SysPart implements java.io.Serializable {
 	private String partDescription;
 	private String remark;
 	private Set<SysTeacher> sysTeachers = new HashSet<SysTeacher>(0);
+	private Set<SysPhoneBook> sysPhoneBooks = new HashSet<SysPhoneBook>(0);
 
 	// Constructors
 
@@ -38,12 +41,13 @@ public class SysPart implements java.io.Serializable {
 
 	/** full constructor */
 	public SysPart(SysOrganization sysOrganization, String partName,
-			String partDescription, String remark, Set<SysTeacher> sysTeachers) {
+			String partDescription, String remark, Set<SysTeacher> sysTeachers, Set<SysPhoneBook> sysPhoneBooks) {
 		this.sysOrganization = sysOrganization;
 		this.partName = partName;
 		this.partDescription = partDescription;
 		this.remark = remark;
 		this.sysTeachers = sysTeachers;
+		this.sysPhoneBooks = sysPhoneBooks;
 	}
 
 	// Property accessors
@@ -103,5 +107,16 @@ public class SysPart implements java.io.Serializable {
 	public void setSysTeachers(Set<SysTeacher> sysTeachers) {
 		this.sysTeachers = sysTeachers;
 	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysPart")
+	public Set<SysPhoneBook> getSysPhoneBooks() {
+		return sysPhoneBooks;
+	}
+
+	public void setSysPhoneBooks(Set<SysPhoneBook> sysPhoneBooks) {
+		this.sysPhoneBooks = sysPhoneBooks;
+	}
+
+	
 
 }

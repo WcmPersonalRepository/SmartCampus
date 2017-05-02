@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.nepo.weixin.pojo.UserBean;
+import com.gxufe.smarcampus.models.UserBean;
 import com.nepo.weixin.pojo.WXUserInfo;
 
 public class SessionUtils {
@@ -105,7 +105,7 @@ public class SessionUtils {
 	public static String getUserIdBySession(HttpServletRequest request) {
 		UserBean userBean = getUserBySession(request);
 
-		return userBean == null ? "" : userBean.getUserId();
+		return userBean == null ? "" : userBean.getSysUsers().getUserId().toString();
 	}
 	
 	/**
@@ -114,11 +114,11 @@ public class SessionUtils {
 	 * @param request
 	 * @return String
 	 */
-	public static String getUserNameBySession(HttpServletRequest request) {
+	/*public static String getUserNameBySession(HttpServletRequest request) {
 		UserBean userBean = getUserBySession(request);
 
 		return userBean == null ? "" : userBean.getUserName();
-	}
+	}*/
 	
 	/**
 	 * 判断当前浏览器是否是微信浏览器

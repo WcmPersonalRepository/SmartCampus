@@ -9,6 +9,7 @@
  </head>
  
  <body>
+ <div class="page-group">
   <div class="page">
   <header class="bar bar-nav apptitle">
     <!-- <a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>
@@ -23,6 +24,7 @@
   </div>
   
   <#include "/PUBLIC/nav-bar.ftl"/>
+</div>
 </div>
 <#include "/PUBLIC/js-noBoot.ftl"/>
 <script type="text/javascript" src="${base}/resources/js/owl.carousel.min.js"></script>

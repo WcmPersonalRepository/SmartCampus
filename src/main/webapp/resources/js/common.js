@@ -3,6 +3,8 @@
 var screenWidth=document.body.clientWidth;
 //获取屏幕高度
 var screenHeight=window.screen.availHeight;
+
+var NET_TIMEOUT=10000;
 function goHref(url){
 	window.location.href=url;
 }
@@ -13,7 +15,23 @@ function clickGoHref(id,url){
 	});
 }
 
-//元素水平居住
+//检查input是否为空
+function checkInputEmpty($){
+	var flag=true;
+	var arr=$(".not-null");
+	for ( var i = 0; i < arr.length; i++) {
+		if (arr[i].value=="") {
+			$.alert($(arr[i]).attr("placeholder"), function () {
+				arr[i].focus();
+	        });
+			flag=false;
+			break;
+		}
+	}
+    return flag;
+}
+
+//元素水平居住.element-horizontal-center
 elementHorizontalCenter();
 function elementHorizontalCenter(){
 	$('.element-horizontal-center').each(function(){
@@ -39,20 +57,7 @@ function elementHorizontalCenter(){
 			console.log('该元素没有宽度');
 			return;
 		}
-		/*if ($cssWdth!='') {
-			width=percentAndPXToNumber($cssWdth);
-		}
-		if (eleStyleWdth!='') {
-			width=percentAndPXToNumber(eleStyleWdth);
-		}if (eleWdth!='') {
-			width=eleWdth;
-		}*/
 		
-		console.log($cssWdth);
-		console.log(eleStyleWdth);
-		console.log(eleWdth);
-		//var ele=$(this).get(0);
-		//var eleWidth=ele.style.withd.sustring(0,ele.style.withd.length-2);
 		this.style.left=(screenWidth-width)/2+'px';
 	});
 	

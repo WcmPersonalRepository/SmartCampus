@@ -34,6 +34,20 @@
 			class="com.gxufe.smarcampus.models.SysAuthoritiesResources" />
 		<mapping
 			class="com.gxufe.smarcampus.models.SysRolesAuthorities" />
+		<mapping class="com.gxufe.smarcampus.models.SysPart" />
+		<mapping class="com.gxufe.smarcampus.models.SysProfessional" />
+		<mapping class="com.gxufe.smarcampus.models.SysClass" />
+		<mapping class="com.gxufe.smarcampus.models.SysCollege" />
+		<mapping class="com.gxufe.smarcampus.models.SysUserLeave" />
+		<mapping class="com.gxufe.smarcampus.models.SysStudent" />
+		<mapping class="com.gxufe.smarcampus.models.SysLeaveInfo" />
+		<mapping class="com.gxufe.smarcampus.models.SysTeacher" />
+		<mapping class="com.gxufe.smarcampus.models.SysCampus" />
+		<mapping class="com.gxufe.smarcampus.models.SysTeachBuilding" />
+		<mapping
+			class="com.gxufe.smarcampus.models.SysTeachBuildingApplyRecord" />
+		<mapping class="com.gxufe.smarcampus.models.SysLeaveInfoRecord" />
+		<mapping class="com.gxufe.smarcampus.models.SysOrganization" />
 
 	</session-factory>
 

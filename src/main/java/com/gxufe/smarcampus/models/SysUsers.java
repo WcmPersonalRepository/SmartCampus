@@ -107,7 +107,7 @@ public class SysUsers implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "STUDENT_ID")
 	public SysStudent getSysStudent() {
 		return this.sysStudent;
@@ -117,7 +117,7 @@ public class SysUsers implements java.io.Serializable {
 		this.sysStudent = sysStudent;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "teacher_id")
 	public SysTeacher getSysTeacher() {
 		return this.sysTeacher;
@@ -127,7 +127,7 @@ public class SysUsers implements java.io.Serializable {
 		this.sysTeacher = sysTeacher;
 	}
 
-	@Column(name = "USERNAME", nullable = false, length = 100)
+	@Column(name = "USERNAME", length = 100)
 	public String getUsername() {
 		return this.username;
 	}
@@ -280,7 +280,7 @@ public class SysUsers implements java.io.Serializable {
 		this.nickname = nickname;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysUsers")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "sysUsers")
 	public Set<SysRoles> getSysRoleses() {
 		return this.sysRoleses;
 	}

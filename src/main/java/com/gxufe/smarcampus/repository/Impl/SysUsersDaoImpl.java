@@ -11,12 +11,16 @@ import com.gxufe.smarcampus.models.SysClass;
 import com.gxufe.smarcampus.models.SysCollege;
 import com.gxufe.smarcampus.models.SysProfessional;
 import com.gxufe.smarcampus.models.SysStudent;
+import com.gxufe.smarcampus.models.SysTeacher;
 import com.gxufe.smarcampus.models.SysUsers;
 import com.gxufe.smarcampus.repository.SysUsersDao;
 
 @Repository
 public class SysUsersDaoImpl extends BaseDaoImpl<SysUsers, Integer> implements SysUsersDao {
 	
-	//注册
+	public SysUsersDaoImpl() {
+		this.entityClass = SysUsers.class;
+	}
+	
 	
 }

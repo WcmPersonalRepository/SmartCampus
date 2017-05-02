@@ -99,4 +99,5 @@ public class BaseServicImpl<T,ID extends Serializable> implements BaseService<T,
 		return baseDao.findPageByQuery(hql, countHql, pageSize, startIndex);
 	}
 
+
 }

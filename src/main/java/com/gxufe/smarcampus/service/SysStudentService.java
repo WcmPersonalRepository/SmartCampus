@@ -4,4 +4,8 @@ import com.gxufe.smarcampus.models.SysStudent;
 import com.gxufe.smarcampus.models.SysUsers;
 
 public interface SysStudentService extends BaseService<SysStudent, Integer> {
+
+	SysStudent findStudentByWorkNumber(String userNumber);
+
+	SysStudent findSysStudentById(Integer valueOf);
 }

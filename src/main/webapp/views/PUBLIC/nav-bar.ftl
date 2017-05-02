@@ -1,17 +1,17 @@
 <nav class="bar bar-tab">
-    <a class="tab-item active" href="${base}/?itemNum=0">
+    <a class="tab-item active" external href="${base}/?itemNum=0">
       <span class="icon icon-home"></span>
       <span class="tab-label">菜园</span>
     </a>
-    <a class="tab-item" href="${base}/educationalManager?itemNum=1">
+    <a class="tab-item" external href="${base}/educationalManager?itemNum=1">
       <span class="icon icon-browser"></span>
       <span class="tab-label">管理</span>
     </a>
-    <a class="tab-item" href="${base}/happyShare?itemNum=2">
+    <a class="tab-item" external href="${base}/happyShare?itemNum=2">
       <span class="icon icon-app"></span>
       <span class="tab-label">乐享</span>
     </a>
-    <a class="tab-item" href="${base}/my/my?itemNum=3">
+    <a class="tab-item" external href="${base}/my/?itemNum=3">
       <span class="icon icon-friends"></span>
       <span class="tab-label">我的</span>
     </a>

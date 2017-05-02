@@ -19,6 +19,8 @@ import com.gxufe.smarcampus.repository.SysUsersDao;
 @Repository
 public class SysTeacherDaoImpl extends BaseDaoImpl<SysTeacher, Integer> implements SysTeacherDao {
 	
-	//注册
+	public SysTeacherDaoImpl() {
+		this.entityClass = SysTeacher.class;
+	}
 	
 }
