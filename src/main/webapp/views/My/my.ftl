@@ -18,7 +18,7 @@
   <div class="content white-bg-color gray-font-color">
      <img alt="" src="${base}/resources/images/my/head_background.png" style="width: 100%;">
      <div class="head-img element-horizontal-center">
-     	<a href="toLogin">
+     	<a href="baseInfo" data-no-cache="true">
      		<#if realName??>
      		<div class="img" >
 	     		<img src="${base }/resources/images/my/head-img-default.png"/>
@@ -33,7 +33,7 @@
      	</a>
      </div>
      <div class="options">
-		     <a href="toCampusAuthentication">
+		     <a href="toCampusAuthentication" data-no-cache="true">
 	     <div class="row options-item line_bottom">
 		     	<div class="col-10">
 		     		<img alt="" src="${base }/resources/images/my/campus-certification.png">
@@ -44,6 +44,8 @@
 		     	</div>
 	     </div>
 		     </a>
+		     
+		     <a href="baseInfo" data-no-cache="true">
 	     <div class="row options-item line_bottom">
 	     	<div class="col-10">
 	     		<img alt="" src="${base }/resources/images/my/base-info.png">
@@ -53,6 +55,8 @@
 	     		<span class="icon icon-right"></span>
 	     	</div>
 	     </div>
+	     </a>
+	     
 	     <div class="row options-item line_bottom">
 	     	<div class="col-10">
 	     		<img alt="" src="${base }/resources/images/my/my-collection.png">
@@ -80,6 +84,8 @@
 	     		<span class="icon icon-right"></span>
 	     	</div>
 	     </div>
+	     
+	     <a href="toSetting" data-no-cache="true">
 	     <div class="row options-item">
 	     	<div class="col-10">
 	     		<img alt="" src="${base }/resources/images/my/setting.png">
@@ -89,6 +95,7 @@
 	     		<span class="icon icon-right"></span>
 	     	</div>
 	     </div>
+	     </a>
      </div>
   </div>
   

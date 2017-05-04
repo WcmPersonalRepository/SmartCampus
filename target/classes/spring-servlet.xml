@@ -84,4 +84,20 @@
 	     <property name="maxInMemorySize" value="4096" />
 	     <property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
+	
+	<!-- SessionTimeout -->
+	<mvc:interceptors>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean
+				class="com.gxufe.smarcampus.common.interceptor.SessionTimeoutInterceptor">
+				<property name="excludedUrls">
+					<list>
+						<value>/my/baseInfo</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

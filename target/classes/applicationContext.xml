@@ -18,4 +18,5 @@
     
     <!-- Security (authentication and authorization) configuration -->
      <import resource="applicationContext-security.xml" />
+     
 </beans>

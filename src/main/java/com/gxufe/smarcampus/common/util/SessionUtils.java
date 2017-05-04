@@ -144,4 +144,14 @@ public class SessionUtils {
 			return false;
 		}
 	}
+	
+
+	/**
+	 * 清除用户缓存信息
+	 * @author wcm
+	 * @param HttpServletRequest
+	 */
+	public static void clearUserBean(HttpServletRequest request) {
+		request.getSession().removeAttribute(SYS_USER_INFO);
+	}
 }

@@ -1,5 +1,6 @@
 package com.gxufe.smarcampus.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -317,8 +318,14 @@ public class myContrller {
 				String dbPasspword=sysUsersList.get(0).getPassword();
 				if (bcryptEncoder.matches(password, dbPasspword)) {
 					UserBean userInfo=new UserBean();
-					userInfo.setSysUsers(sysUsersList.get(0));
+					SysUsers sysUser=sysUsersList.get(0);
+					userInfo.setSysUsers(sysUser);
+					userInfo.setSysTeacher(sysUser.getSysTeacher());
+					userInfo.setSysPart(sysUser.getSysTeacher().getSysPart());
+					userInfo.setSysOrganization(sysUser.getSysTeacher().getSysPart().getSysOrganization());
+					userInfo.setUserType("1");
 					request.getSession().setAttribute("sys_user_info", userInfo);
+					
 					map.put("code", "0");
 					map.put("msg", "登录成功");
 					map.put("url", "my/?itemNum=3");
@@ -344,7 +351,14 @@ public class myContrller {
 				String dbPasspword=sysUsersList.get(0).getPassword();
 				if (bcryptEncoder.matches(password, dbPasspword)) {
 					UserBean userInfo=new UserBean();
+					SysUsers sysUser=sysUsersList.get(0);
 					userInfo.setSysUsers(sysUsersList.get(0));
+					userInfo.setSysStudent(sysUser.getSysStudent());
+					userInfo.setSysClass(sysUser.getSysStudent().getSysClass());
+					userInfo.setSysProfessional(sysUser.getSysStudent().getSysClass().getSysProfessional());
+					userInfo.setSysCollege(sysUser.getSysStudent().getSysClass().getSysProfessional().getSysCollege());
+					userInfo.setSysCampus(sysUser.getSysStudent().getSysClass().getSysProfessional().getSysCollege().getSysCampus());
+					userInfo.setUserType("2");
 					request.getSession().setAttribute("sys_user_info", userInfo);
 					map.put("code", "0");
 					map.put("msg", "登录成功");
@@ -365,5 +379,55 @@ public class myContrller {
 			}
 		}
 		return "My/my";
+	}
+	
+	/**
+	 * 个人信息
+	 * 
+	 * */
+	@RequestMapping("baseInfo")
+	public String baseInfo(HttpServletRequest request,Model model){
+		UserBean userInfo=SessionUtils.getUserBySession(request);
+		String userType=userInfo.getUserType();
+		if ("1".equals(userType)) {
+			model.addAttribute("realName", userInfo.getSysTeacher().getRealName());
+			model.addAttribute("partName", userInfo.getSysPart().getPartName());
+			model.addAttribute("positionName", userInfo.getSysTeacher().getPositionName());
+			model.addAttribute("organizationName", userInfo.getSysOrganization().getOrganizationName());
+			model.addAttribute("workNumber", userInfo.getSysTeacher().getWorkNumber());
+		}
+		if ("2".equals(userType)) {
+			model.addAttribute("realName", userInfo.getSysStudent().getRealName());
+			model.addAttribute("className", userInfo.getSysClass().getClassName());
+			model.addAttribute("studentNumber", userInfo.getSysStudent().getStudentNumber());
+			model.addAttribute("professional", userInfo.getSysProfessional().getProfessionalName());
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy");
+			String intoSchoolYear=sdf.format(userInfo.getSysStudent().getIntoSchoolYear());
+			model.addAttribute("intoSchoolYear", intoSchoolYear);
+			model.addAttribute("collegeName", userInfo.getSysCollege().getCollegeName());
+		}
+		model.addAttribute("userType", userInfo.getUserType());
+		return "My/baseInfo";
+	}
+
+	/**
+	 * 跳转设置
+	 * 
+	 * */
+	@RequestMapping("toSetting")
+	public String toSetting(HttpServletRequest request,Model model){
+		UserBean userInfo=SessionUtils.getUserBySession(request);
+		model.addAttribute("userInfo", userInfo);
+		return "My/setting";
+	}
+	
+	/**
+	 * 登出
+	 * 
+	 * */
+	@RequestMapping("logout")
+	public String logout(HttpServletRequest request,Model model){
+		SessionUtils.clearUserBean(request);
+		return "redirect:/my/?itemNum=3";
 	}
 }

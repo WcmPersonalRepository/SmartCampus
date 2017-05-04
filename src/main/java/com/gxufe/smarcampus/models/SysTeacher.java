@@ -75,7 +75,7 @@ public class SysTeacher implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "part_id")
 	public SysPart getSysPart() {
 		return this.sysPart;
