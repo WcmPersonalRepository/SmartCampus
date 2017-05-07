@@ -10,4 +10,5 @@
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
   	<link rel="stylesheet" href="${base}/resources/css/app.css" type="text/css"></link>
+  	<link rel="stylesheet" href="${base}/resources/css/animate.css" type="text/css"></link>
 	<script type="text/javascript" src="${base}/resources/js/jquery-2.1.4.min.js"></script>

@@ -37,14 +37,17 @@ public class SessionTimeoutInterceptor extends HandlerInterceptorAdapter {
 		String fullPath = request.getRequestURI();
         String contextPath = request.getContextPath();
         String requestPath = fullPath.replace(contextPath, "");
-		logger.info(new StringBuilder("requestPath[").append(requestPath).append(
-				"]"));
+		if (!(requestPath.indexOf(".png")>=0||requestPath.indexOf(".js")>=0||requestPath.indexOf(".png")>=0||requestPath.indexOf(".jpg")>=0||requestPath.indexOf(".css")>=0)) {
+			logger.info(new StringBuilder("requestPath[").append(requestPath).append(
+					"]"));
+		}
 		
 		if ("/".equals(requestPath)) {
 			return true;
 		} else {
 			for (String url : excludedUrls) {
 				if (requestPath.startsWith(url)) {
+					
 					UserBean userBean = SessionUtils.getUserBySession(request);
 					if (userBean == null) {
 						String isWinXin=(String) request.getSession().getAttribute("isWeiXin");

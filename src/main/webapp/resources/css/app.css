@@ -22,6 +22,14 @@ ul li{list-style: none;}
 .border-left{border-left: 1px solid #efeff4;}
 .border-top{border-top: 1px solid #efeff4;}
 .border-bottom{border-bottom: 1px solid #efeff4;}
+/* 按钮 */
+.primary-btn{background-color:#3399ff;border: none;padding: 0.4rem 1rem;border-radius:5px;color: white; }
+.primary-btn:ACTIVE {background-color: #235d97;	}
+.primary-radius-btn{background-color:#3399ff;border: none;padding: 0.3rem 2rem;border-radius:1rem;color: white; }
+.primary-radius-btn:ACTIVE {background-color: #235d97;	}
+.green-btn{background-color:#66cccc;border: none;padding: 0.4rem 1rem;border-radius:5px;color: white; }
+.green-btn:ACTIVE {background-color: #339999;	}
+.long-btn{width: 90%;margin: 1rem 5%;}
 
 /** 管理 */
 .owl-carousel img{width: 100%;float: left;}
@@ -107,9 +115,7 @@ ul li{list-style: none;}
 .personal-img img{width: 100%;margin: 0;}
 .item-content-left{width: 50%;}
 .item-content-right{width: 50%;text-align: right;}
-.primary-btn{background-color:#3399ff;border: none;padding: 0.4rem 1.5rem;border-radius:5px;color: white; }
-.primary-btn:ACTIVE {background-color: #235d97;	}
-.long-btn{width: 90%;margin: 1rem 5%;}
+
 
 /* 校方认证 */
 .campus-authentication-info{padding: 0 10%;}
@@ -135,11 +141,65 @@ ul li{list-style: none;}
 .welcome-img{width: 100%;text-align: center;padding: 20% 0;}
 .welcome-img img{width: 40%;position: relative;margin: auto;}
 
+/* 在线请假*/
+.onlineLeave-options{height: 3rem;background-color: white;text-align: right;padding: 0.5rem 0.5rem;}
+.onlineLeave-options img{height: 2rem;float: right;}
+.onlineLeave-options div{float: right;margin-left: 0.5rem;}
+.drop{position: absolute;float: right;right: 0.5rem;top:0.2rem;}
+.drop img{width:0.8rem;height: 0.8rem;}
+.leave-record{background-color: white;margin-top: 1rem;width: 100%;padding:1rem 5%;}
+.leave-record-title{border-bottom: 2px solid #3399ff; width: 3.8rem;}
+.leave-record-main{width: 100%;padding-left: 5%;}
+.leave-record-table{width: 100%;font-size: 0.8rem; }
+.leave-record-table tr{height: 2rem;text-align: center;}
+.leave-record-table tbody{font-size: 0.7rem;}
+.leave-record-table tbody tr td:FIRST-CHILD{}
+.leave-record-table tbody tr td:FIRST-CHILD{color:#3399ff; }
+.leave-record-content{margin-top: 1rem;padding-bottom: 3rem;}
 
+/* 学生请假*/
+.single-or-more{background-color: white;padding: 1rem 1rem;position: fixed;top:2.2rem;right: 0;width: 100%; }
+.single{width: 6rem;line-height: 1rem;position: fixed;top:2.7rem;right: 7rem;}
+.more{width: 6rem;line-height: 1rem;position: fixed;top:2.7rem;right: 0.5rem;}
+.single div{float: left;}
+.more div{float: left;}
+.single-content{width: 4rem;}
+.kuang{width: 0.7rem;height: 0.7rem;border: 1px solid #3d4145;float: left;}
+.single-logo{margin-top: 0.1rem;}
+.single-logo img{height: 0.8rem;}
+.single-choose{margin-top: 0.2rem}
+.kuang-bg{background-image: url("/SmartCampus/resources/images/EducationalManager/choose-logo.png");background-position: 50% 50%;background-size:0.7rem 0.7rem;border: none;}
+.single-leave,.more-leave{display: none;margin-top: 2rem;}
+.baseInfo,.leave-required{background-color: white; padding: 1rem 5%;}
+.baseInfo-item{height: 2rem;line-height: 2rem;}
+.baseInfo-item-right{text-align: right;}
+.leave-required{margin-top: 1rem;}
+.baseInfo-items input{border: none;text-align: right;}
+.textarea{width:100%;height: 4.9rem;border: 1px solid gray;padding: 0.3rem;line-height: 1rem;}
+.picker-font-size{font-size: 0.8rem;}
+.picker-items{font-size: 0.95rem;}
+.submit{text-align: center;height: 4rem;padding: 1.5rem;background-color: white;}
+.more-leave-required-item{padding: 0.5rem 0;}
+.startTime,.endTime{font-size: 0.8rem;}
 
-
-
-
+/* 我要批假*/
+.wait-make-leave-item{height: 3.5rem;padding: 0.5rem 0;}
+.wait-make-leave-item>div{float: left;}
+.wait-make-leave-main>div{float: left;}
+.wait-make-leave-left{width: 10%;}
+.wait-make-leave-left-single-logo{margin-top: 0.3rem;width: 1.4rem;margin-left: 0.1rem;}
+.wait-make-leave-left-more-logo{margin-top: 0.4rem;width: 1.7rem;}
+.wait-make-leave-amount{font-size:0.7rem;color:#cc0000;text-align: right;}
+.amount{font-size: 1.3rem;}
+.wait-make-leave-main{width: 60%;padding-left: 0.5rem;font-size: 0.7rem;padding-top: 0.2rem;}
+.wait-make-leave-right{width: 30%;text-align: right;padding-top: 0.5rem;}
+.wait-make-leave-left-bottom{width: 60%;}
+.wait-make-leave-left-bottom-top img{height: 0.7rem;}
+.wait-make-leave-left-top{width: 40%;}
+.wait-make-btn{background-color: white;padding: 0.2rem 1rem;border-radius:5px;border:1px solid #cc0000;color:#cc0000;font-size: 0.7rem;}
+.wait-make-btn:ACTIVE {background-color: #cc0000;color:white;}
+.maked-btn{background-color: white;padding: 0.2rem 1rem;border-radius:5px;border:1px solid #3399ff;color:#3399ff;font-size: 0.7rem;}
+.maked-btn:ACTIVE {background-color:#3399ff;color:white;}
 
 
 

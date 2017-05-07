@@ -3,7 +3,7 @@
       <span class="icon icon-home"></span>
       <span class="tab-label">菜园</span>
     </a>
-    <a class="tab-item" external href="${base}/educationalManager?itemNum=1">
+    <a class="tab-item" external href="${base}/educationalManager/?itemNum=1">
       <span class="icon icon-browser"></span>
       <span class="tab-label">管理</span>
     </a>

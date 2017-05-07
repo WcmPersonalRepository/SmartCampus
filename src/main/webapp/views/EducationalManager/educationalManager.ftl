@@ -10,7 +10,7 @@
  
  <body>
  <div class="page-group">
-  <div class="page">
+  <div class="page" id="page-manager">
   <header class="bar bar-nav apptitle">
     <!-- <a class="button button-link button-nav pull-left" href="/demos/card" data-transition='slide-out'>
       <span class="icon icon-left"></span>
@@ -21,14 +21,16 @@
   
   <div class="content">
 	<div class="manager-items">
-		<ul class="manager-items-double">
+		<ul class="manager-items-double" id="onlineLeave">
 			<li class="manager-item  online-application">
+			<!-- <a href="onlineLeave" style="width: 100%;height: 100%;" data-no-cache="true"> -->
 			<div>
-				<div class="manager-item-logo">
+				<div class="manager-item-logo" >
 					<img alt="" src="${base}/resources/images/EducationalManager/online-application.png">
 				</div>
 				<p>在线请假</p>
 				</div>
+				<!-- </a> -->
 			</li>
 			<li class="manager-item apply-classroom">
 				<div>
@@ -62,24 +64,23 @@
   <#include "/PUBLIC/nav-bar.ftl"/>
 </div>
 <#include "/PUBLIC/js-noBoot.ftl"/>
-</div>
-<script type="text/javascript" src="${base}/resources/js/owl.carousel.min.js"></script>
 
   </body>
   
-  <script>
-		$(document).ready(function() {
-			$("#owl-demo").owlCarousel({
-				autoPlay:10000,
-				stopOnHover: true,
-				paginationSpeed: 1000,
-				goToFirstSpeed: 2000,
-				singleItem: true,
-				autoHeight: true,
-				transitionStyle: "fade"
-			});
-		});
+<script>
+var _$=undefined;
+//picker
++ function($) {
+  'use strict';
+  $(document).on("pageInit", "#page-manager", function(e, id, page) {
+	  _$=$;
+		 $("#onlineLeave").click(function(event){
+			$.router.load("onlineLeave",true);
+		  }); 
+	  });
+}(Zepto);
 		
-	</script>
+</script>
+</div>
   </body>
 </html>
