@@ -178,7 +178,7 @@ ul li{list-style: none;}
 .textarea{width:100%;height: 4.9rem;border: 1px solid gray;padding: 0.3rem;line-height: 1rem;}
 .picker-font-size{font-size: 0.8rem;}
 .picker-items{font-size: 0.95rem;}
-.submit{text-align: center;height: 4rem;padding: 1.5rem;background-color: white;}
+.submit{text-align: center;height: 4rem;padding: 1rem;background-color: white;}
 .more-leave-required-item{padding: 0.5rem 0;}
 .startTime,.endTime{font-size: 0.8rem;}
 
@@ -200,6 +200,15 @@ ul li{list-style: none;}
 .wait-make-btn:ACTIVE {background-color: #cc0000;color:white;}
 .maked-btn{background-color: white;padding: 0.2rem 1rem;border-radius:5px;border:1px solid #3399ff;color:#3399ff;font-size: 0.7rem;}
 .maked-btn:ACTIVE {background-color:#3399ff;color:white;}
+
+/*单人请假信息*/
+.make-leave-options{background-color: white;height: 3rem;text-align: right;padding: 0.7rem 5%;position: fixed;top:2.2rem;right:0;width: 100%;}
+.make-leave-options button{margin-left: 0.5rem;}
+.make-leave-agree{border: none;background-color: #3399ff;padding: 0.2rem 0.8rem;border-radius:3px;color:white;font-size: 0.8rem;}
+.make-leave-agree:ACTIVE {background-color: #235d97;}
+.make-leave-disagree{border: none;background-color:  #cc0000;padding: 0.2rem 0.8rem;border-radius:3px;color:white;font-size: 0.8rem;}
+.make-leave-disagree:ACTIVE {background-color: #830e0e;}
+.call{color:blue;}
 
 
 

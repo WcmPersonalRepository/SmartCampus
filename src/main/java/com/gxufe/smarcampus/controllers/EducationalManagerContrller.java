@@ -82,6 +82,18 @@ public class EducationalManagerContrller {
 		return "EducationalManager/makeLeave";
 	}
 	
+	/**
+	 * 批假请假信息
+	 * @author wcm
+	 * @param HttpServletRequest request
+	 * @param Model model
+	 * return String
+	 * */
+	@RequestMapping(value="/onlineLeave/toMakeLeaveInfo",method=RequestMethod.GET)
+	public String toMakeLeaveInfo(HttpServletRequest request,Model model){
+		return "EducationalManager/singleLeaveInfo";
+	}
+	
 	@RequestMapping("/showVideo")
 	public String showVideo(HttpServletRequest request,Model model){
 		return "EducationalManager/videoPlay";

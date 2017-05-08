@@ -47,7 +47,7 @@
 				<div class="manager-item-logo">
 					<img alt="" src="${base}/resources/images/EducationalManager/bus-Service.png">
 				</div>
-				<p>小车服务</p>
+				<p>校车服务</p>
 				</div>
 			</li>
 			<li class="manager-item other-service" style="margin-top: 0;">

@@ -38,7 +38,12 @@
 	  	 				<div class="wait-make-leave-left-bottom-bottom">2017-05-30</div>
   	 				</div>
   	 			</div>
-  	 			<div class="wait-make-leave-right"><button class="wait-make-btn">未处理</button></div>
+  	 			
+  	 			<div class="wait-make-leave-right">
+  	 				<a href="toMakeLeaveInfo" style="width: 100%;height: 100%;" data-no-cache="true">
+  	 					<button class="wait-make-btn">未处理</button>
+  	 				</a>
+  	 			</div>
   	 		</li>
   	 		<li class="wait-make-leave-item border-bottom">
   	 			<div class="wait-make-leave-left"><img class="wait-make-leave-left-more-logo" src="${base }/resources/images/EducationalManager/more.png"></div>

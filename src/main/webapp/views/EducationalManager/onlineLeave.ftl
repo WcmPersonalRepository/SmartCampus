@@ -50,17 +50,17 @@
   					<tbody>
   						<tr class="border-bottom">
   							<td>10</td>
-  							<td>查看</td>
+  							<td><a href="onlineLeave/toMakeLeave" data-no-cache="true">查看</a></td>
   							<td>2017-05-05</td>
   						</tr>
   						<tr class="border-bottom">
   							<td>10</td>
-  							<td>查看</td>
+  							<td><a href="onlineLeave/toMakeLeave" data-no-cache="true">查看</a></td>
   							<td>2017-05-05</td>
   						</tr>
   						<tr class="border-bottom">
   							<td>10</td>
-  							<td>查看</td>
+  							<td><a href="onlineLeave/toMakeLeave" data-no-cache="true">查看</a></td>
   							<td>2017-05-05</td>
   						</tr>
   					</tbody>

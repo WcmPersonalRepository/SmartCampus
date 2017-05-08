@@ -2,52 +2,38 @@
 <link rel="stylesheet" href="${base}/resources/css/owl.theme.css" type="text/css"></link>
 <link rel="stylesheet" href="${base}/resources/css/owl.carousel.css" type="text/css"></link>
 <link rel="stylesheet" href="${base}/resources/css/custom.css" type="text/css"></link>
-    <title>学生请假</title>
+    <title>请假信息</title>
     <style>
-    	
+    	.make-leave-options{background-color: white;height: 3rem;text-align: right;padding: 0.7rem 5%;position: fixed;top:2.2rem;right:0;width: 100%;}
+    	.make-leave-options button{margin-left: 0.5rem;}
+    	.make-leave-agree{border: none;background-color: #3399ff;padding: 0.2rem 0.8rem;border-radius:3px;color:white;font-size: 0.8rem;}
+    	.make-leave-agree:ACTIVE {background-color: #235d97;}
+    	.make-leave-disagree{border: none;background-color:  #cc0000;padding: 0.2rem 0.8rem;border-radius:3px;color:white;font-size: 0.8rem;}
+    	.make-leave-disagree:ACTIVE {background-color: #830e0e;}
+    	.call{color:#235d97;}
     </style>
  </head>
  
  <body>
  <div class="page-group">
-  <div id="page-student-leave" class="page">
+  <div id="page-student-singleLeaveInfo" class="page">
   <header class="bar bar-nav apptitle">
      <a class="button button-link button-nav pull-left back" style="color: white;" data-transition='slide-out'>
       <span class="icon icon-left" style="font-size:0.7rem;text-indent: 0.5rem;"></span>
     </a> 
-     <h1 class="title title-color">学生请假</h1>
+     <h1 class="title title-color">请假信息</h1>
     <!-- <span class="icon icon-search" id="icon-search-out" onclick="search()" style="float: right;color: white;font-size: 1rem;line-height: 1.5rem"></span>  -->
     <div class="search-input"><span class="icon icon-search"></span><input id="search" onkeyup="updateItem()" placeholder="请输入科室或姓名" type="text"></div>
     <div class="search-text" onclick="cancel()">取消</div>
   </header>
   	
   <div class="content no-bottom">
-  	<div class="single-or-more">
-  		<div class="single" id="single">
-  			<div class="single-logo">
-  				<img alt="" src="${base}/resources/images/EducationalManager/single.png">
-  			</div>
-  			<div class="single-content">
-  				&nbsp;单人请假
-  			</div>
-  			<div class="single-choose">
-  				<div class="kuang kuang-bg"></div>
-  			</div>
-  		</div>
-  		<div class="more" id="more">
-  			<div class="single-logo">
-  				<img alt="" src="${base}/resources/images/EducationalManager/more.png">
-  			</div>
-  			<div class="single-content">
-  				&nbsp;多人请假
-  			</div>
-  			<div class="single-choose">
-  				<div class="kuang"></div>
-  			</div>
-  		</div>
-  	</div>
   	
-  	<div class="single-leave">
+  		<div class="make-leave-options">
+  			<button class="make-leave-agree" id="agree">同意</button>
+  			<button class="make-leave-disagree" id="disagree">拒绝</button>
+  		</div>
+  	<div class="single-leave" style="display: block;margin-top: 0;padding-top: 2rem;">
   	<!-- 基本信息 -->
   		<div class="baseInfo">
   			<div class="leave-record-title">基本信息</div>
@@ -84,11 +70,11 @@
   			<ul class="baseInfo-items">
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">学生号码</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;"><input type="text" placeholder="请输入学生联系方式"/></div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">18277719844&nbsp;&nbsp;<a href="tel:18277719844" class="call">呼叫</a></div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">家长号码</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;"><input type="text" placeholder="请输入家长联系方式"/></div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">13558471819&nbsp;&nbsp;<a href="tel:13558471819" class="call">呼叫</a></div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 25%;">开始时间</div>
@@ -110,7 +96,7 @@
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">辅导员</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">计算机在应用技术</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">韦火旺</div>
   				</li>
   				<li class="baseInfo-item row border-bottom" style="height: 5rem;">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">请假原因</div>
@@ -119,211 +105,36 @@
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 40%;">家长是否同意</div>
   					<div class="baseInfo-item-right col-50 row" style="margin-left: 0;width: 60%;">
-  						<input type="text" id="isAgree" class="col-85 isAgree" style="margin-top: 0.3rem;" placeholder="请选择"/>
-  						<span class="icon icon-down col-15"></span>
-  					</div>
-  				</li>
-  			</ul>
-  			
-  			<div class="submit">
-  				<button class="primary-radius-btn" id="studentSingleLeave">提交</button>
-  			</div>
-  		</div>
-  		
-  	</div>
-  	
-  	<!-- 多人请假 -->
-  	<div class="more-leave">
-  	<!-- 本人基本信息 -->
-  		<div class="baseInfo">
-  			<div class="leave-record-title" style="width: 5.5rem;">本人基本信息</div>
-  			<ul class="baseInfo-items">
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">学号</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">1232338928</div>
-  				</li>
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">姓名</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">吴朝明</div>
-  				</li>
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">性别</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">男</div>
-  				</li>
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">班级</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">计应1331</div>
-  				</li>
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">专业</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">计算机在应用技术</div>
-  				</li>
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">学院</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">信息与统计学院</div>
-  				</li>
-  			</ul>
-  		</div>
-  		
-  		<div class="leave-required">
-  		<!-- 本人请假必填 -->
-  			<div class="self-leave-required">
-	  			<div class="leave-record-title" style="width: 5.5rem;">本人请假必填</div>
-	  			<ul class="baseInfo-items">
-	  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">学生号码</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;"><input type="text" placeholder="请输入学生联系方式"/></div>
-  				</li>
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">家长号码</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;"><input type="text" placeholder="请输入家长联系方式"/></div>
-  				</li>
-	  			</ul>
-  			</div>
-  			<!-- 多人请假必填-->
-  			<div class="more-leave-required" >
-  				<div class="row">
-		  			<div class="col-30" style="width: 40%;"	><span class="leave-record-title" style="width: 5.5rem;">多人请假必填</span></div>
-		  			<div class="col-70 open-popup" style="text-align: right;width: 60%;">添加+</div>
-  				</div>
-  				<ul class="more-leave-required-items">
-  					<li class="more-leave-required-item border-bottom">
-  						<div class="row">
-  							<div class="col-70">姓名：吴朝明</div>
-  							<div class="col-30 remove" style="text-align: right;float: right;">×</div>
-  						</div>
-						
-						<div class="">学号：120604303128</div>
-						<div class="">班级：计算机应用技术</div>
-						<div class="">联系方式：348573984</div>
-  					</li>
-  					<li class="more-leave-required-item border-bottom">
-  						<div class="row">
-  							<div class="col-70">姓名：吴朝明</div>
-  							<div class="col-30 remove" style="text-align: right;float: right;">×</div>
-  						</div>
-						
-						<div class="">学号：120604303128</div>
-						<div class="">班级：计算机应用技术</div>
-						<div class="">联系方式：348573984</div>
-  					</li>
-  					<li class="more-leave-required-item border-bottom">
-  						<div class="row">
-  							<div class="col-70">姓名：吴朝明</div>
-  							<div class="col-30 remove" style="text-align: right;float: right;">×</div>
-  						</div>
-						
-						<div class="">学号：120604303128</div>
-						<div class="">班级：计算机应用技术</div>
-						<div class="">联系方式：348573984</div>
-  					</li>
-  				</ul>
-  			</div>
-  			
-  		</div>
-  		<!-- 请假必填 -->
-  		<div class="leave-required">
-  			<div class="leave-record-title">请假必填</div>
-  			<ul class="baseInfo-items">
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 25%;">开始时间</div>
-	  				<div class="baseInfo-item-right col-50 row" style="margin-left: 0;width: 75%;line-height: 2rem;">
-	  					<div style="">
-	  						<input type="text" id="startTime" placeholder="请选择开始时间" class="col-70 startTime" style="width: 85%;margin-left: 0;" />
-							&nbsp;<img alt="" src="${base}/resources/images/EducationalManager/startTime.png" class="col-30" style="width: 0.9rem;position: relative;top:0.1rem;margin-left: 0;">
-						</div>
-					</div>
-  				</li>
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 25%;">结束时间</div>
-	  				<div class="baseInfo-item-right col-50 row" style="margin-left: 0;width: 75%;line-height: 2rem;">
-	  					<div style="">
-	  						<input type="text" id="endTime" placeholder="请选择结束时间" class="col-70 endTime" style="width: 85%;margin-left: 0;" />
-							&nbsp;<img alt="" src="${base}/resources/images/EducationalManager/endTime.png" class="col-30" style="width: 0.9rem;position: relative;top:0.1rem;margin-left: 0;">
-						</div>
-					</div>
-  				</li>
-  				<li class="baseInfo-item row border-bottom" style="height: 5rem;">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">请假原因</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;"><textarea placeholder="请填写请假原因100字以内" class="textarea"></textarea></div>
-  				</li>
-  				<li class="baseInfo-item row border-bottom">
-  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 40%;">家长是否同意</div>
-  					<div class="baseInfo-item-right col-50 row" style="margin-left: 0;width: 60%;">
-  						<input type="text" id="isAgree" class="col-85 isAgree" style="margin-top: 0.3rem;" placeholder="请选择"/>
-  						<span class="icon icon-down col-15"></span>
+  						是
   					</div>
   				</li>
   			</ul>
   		</div>
-  			<div class="submit">
-  				<button class="primary-radius-btn" id="studentMoreLeave">提交</button>
-  			</div>
   		
   	</div>
-  	
   </div>
 </div>
 
-<!-- About Popup -->
-<style>
-	.content-block{margin-top: 2.2rem;}
-</style>
-<div class="popup popup-about">
-  <div class="content-block">
-  	<header class="bar bar-nav apptitle">
-     <a class="button button-link button-nav pull-left close-popup" style="color: white;" data-transition='slide-out'>
-      <span class="icon icon-left" style="font-size:0.7rem;text-indent: 0.5rem;"></span>
-    </a> 
-     <h1 class="title title-color">添加请假人</h1>
-    <!-- <span class="icon icon-search" id="icon-search-out" onclick="search()" style="float: right;color: white;font-size: 1rem;line-height: 1.5rem"></span>  -->
-    <div class="search-input"><span class="icon icon-search"></span><input id="search" onkeyup="updateItem()" placeholder="请输入科室或姓名" type="text"></div>
-    <div class="search-text" onclick="cancel()">取消</div>
-  </header>
-    <p>About</p>
-    <p><a href="#" class="close-popup">Close popup</a></p>
-    <p>Lorem ipsum dolor ...</p>
-  </div>
-</div>
+<#include "/PUBLIC/make-leave-model.ftl"/>
 <#include "/PUBLIC/js-noBoot.ftl"/>
+
 <script>
 var _$=undefined;
 //picker
 + function($) {
   'use strict';
-  $(document).on("pageInit", "#page-student-leave", function(e, id, page) {
+  $(document).on("pageInit", "#page-student-singleLeaveInfo", function(e, id, page) {
 	  _$=$;
-		$("#leave").click(function(event){
-			$.router.load("onlineLeave/toStudentLeave",true);
-		  });
-
-		var state=1;
-		singleOrMoreSwich(state);
-		$("#single").click(function(){
-			state=1;
-			$(this).find(".kuang").addClass("kuang-bg");
-			$("#more").find(".kuang").removeClass("kuang-bg");
-			singleOrMoreSwich(state);
-		});
-		$("#more").click(function(){
-			state=2;
-			$(this).find(".kuang").addClass("kuang-bg");
-			$("#single").find(".kuang").removeClass("kuang-bg");
-			singleOrMoreSwich(state);
-		});
-
-		//多人请假与单人请假切换
-		function singleOrMoreSwich(state){
-			if (state==1) {
-				$(".more-leave").hide();
-				$(".single-leave").show();
-			}
-			if (state==2) {
-				$(".single-leave").hide();
-				$(".more-leave").show();
-			}
-		}
-		
+	  
+	  	$("#makeLeave").click(function(e){
+	  		$.showPreloader();
+	  		setTimeout(function(){
+	  			 $.hidePreloader();
+				  $.router.load("toMakeLeave",true);
+		  	}, 1000);
+	  		  
+		 });
+		 
 		function getDefaults(){
 			var today = new Date();
 
@@ -514,7 +325,6 @@ var _$=undefined;
 </script>
 
 </div>
-<!-- 添加页面 -->
 </div> 
 
   </body>
