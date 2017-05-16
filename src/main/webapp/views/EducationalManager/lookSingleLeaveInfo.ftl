@@ -4,13 +4,6 @@
 <link rel="stylesheet" href="${base}/resources/css/custom.css" type="text/css"></link>
     <title>请假信息</title>
     <style>
-    	.make-leave-options{background-color: white;height: 3rem;text-align: right;padding: 0.7rem 5%;position: fixed;top:2.2rem;right:0;width: 100%;}
-    	.make-leave-options button{margin-left: 0.5rem;}
-    	.make-leave-agree{border: none;background-color: #3399ff;padding: 0.2rem 0.8rem;border-radius:3px;color:white;font-size: 0.8rem;}
-    	.make-leave-agree:ACTIVE {background-color: #235d97;}
-    	.make-leave-disagree{border: none;background-color:  #cc0000;padding: 0.2rem 0.8rem;border-radius:3px;color:white;font-size: 0.8rem;}
-    	.make-leave-disagree:ACTIVE {background-color: #830e0e;}
-    	.call{color:#235d97;}
     </style>
  </head>
  
@@ -29,10 +22,17 @@
   	
   <div class="content no-bottom">
   	
-  		<div class="make-leave-options">
-  			<button class="make-leave-agree" id="agree">同意</button>
-  			<button class="make-leave-disagree" id="disagree">拒绝</button>
-  		</div>
+  		 <div class="make-leave-options">
+  		 	<#if statusCode==0>
+  				<button class="make-leave-making" id="making">审核中</button>
+  			</#if>
+  		 	<#if statusCode==1>
+  				<button class="make-leave-agree" id="agree">已同意</button>
+  			</#if>
+  			<#if statusCode==2>
+  			<button class="make-leave-disagree" id="disagree">已拒绝</button>
+  			</#if>
+  		</div> 
   	<div class="single-leave" style="display: block;margin-top: 0;padding-top: 2rem;">
   	<!-- 基本信息 -->
   		<div class="baseInfo">
@@ -115,7 +115,35 @@
   </div>
 </div>
 
-<#include "/PUBLIC/make-leave-model.ftl"/>
+<style>
+	.make-leave-msg{position: fixed;top:0;background-color: rgba(0,0,0,0.5);height: 100%;width: 100%;z-index: 9999;display: none;}
+	.make-leave-dialog{background-color: white;height: 10rem;width: 80%;position: absolute;margin: auto;border-radius:5px;padding: 0.5rem;top:50%;left: 50%;margin-top: -5rem;margin-left: -40%;}
+	.input-content textarea{height: 100%;width: 100%;font-size: 0.7rem;}
+	.input-content{width: 100%;height: 6rem;padding-bottom: 0.5rem;}
+	.make-leave-dialog-btn{text-align: right;}
+	.animated{animation-duration:0.3s;}
+</style>
+<!-- 批假备注 -->
+<div class="make-leave-msg" id="make-leave-model">
+	<div class="make-leave-dialog">
+		<div class="make-leave-dialog-tittle">批假意见</div>
+		<div class="input-content"><textarea id="make-leave-advice" placeholder="30字以内"></textarea></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+	 $("#make-leave-model").click(function(e){
+		 $(".make-leave-dialog").removeClass("animated zoomIn");
+		 $(".make-leave-dialog").addClass("animated zoomOut");
+		 var _$this=$(this);
+		 setTimeout(function(){_$this.hide();}, 300);
+	}); 
+	 $(".make-leave-dialog").click(function(e){
+		e.stopPropagation();
+	}); 
+	
+</script>
 <#include "/PUBLIC/js-noBoot.ftl"/>
 
 <script>
@@ -125,45 +153,23 @@ var _$=undefined;
   'use strict';
   $(document).on("pageInit", "#page-student-singleLeaveInfo", function(e, id, page) {
 	  _$=$;
-	  var statusCode=undefined;
 	  $("#agree").click(function(e){
-			 showModel();
-			 statusCode=1;
+			 $("#make-leave-advice").text("${approverAdvice}");
+			 $(".make-leave-dialog").removeClass("animated zoomOut");
+			 $(".make-leave-dialog").addClass("animated zoomIn");
+			 $("#make-leave-model").show();
 		 }); 
 		 $("#disagree").click(function(e){
-			 showModel();
-			 statusCode=2;
+			 $("#make-leave-advice").text("${approverAdvice}");
+			 $(".make-leave-dialog").removeClass("animated zoomOut");
+			 $(".make-leave-dialog").addClass("animated zoomIn");
+			 $("#make-leave-model").show();
 		}); 
-		 $("#makeLeave").click(function(e){
-			 var approverAdvice=$("#approverAdvice").val();
-			//提交
-			var timer=undefined;
-			$.ajax({
-				url:"${base}/educationalManager/onlineLeave/makeLeave",
-				type:"post",
-				dataType:"json",
-				data:{"id":"${id}","statusCode":statusCode,"approverAdvice":approverAdvice},
-				beforeSend:function(){
-					_$.showPreloader();
-					timer=setTimeout(function(){
-						_$.hidePreloader();
-						_$.alert("网络连接超时", function () {
-					      });
-						}, 10*1000);
-				},
-				success:function(data){
-					clearTimeout(timer);
-					 _$.hidePreloader();
-					 if (data.code==0) {
-						 $.router.load("${base}/educationalManager/onlineLeave",true);
-					 }else{
-						 $.alert(data.msg, function () {
-					     });
-				     }
-				},
-			});
+		 $("#making").click(function(e){
+			 $.alert("请假条在审核中", function () {
+		     });
 		}); 
-	  });
+ });
 
 }(Zepto);
 

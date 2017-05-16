@@ -25,14 +25,14 @@
     <!-- <form action="campusAuthentication" method="post"> -->
   	<div class="campus-authentication-info">
   		<div class="item-input">
-  			<div class="item-input-content " ><input type="text" class="not-null" id="userType" name="userType" placeholder="请选择用户类型" value="" readonly/></div>
+  			<div class="item-input-content " ><input type="text" class="not-null" id="userType" name="userType" placeholder="请选择用户类型" value="教师" readonly/></div>
   			<div class="item-input-logo " ><span class="icon icon-down" style=""></span></div>
   		</div>
   		<div class="item-input">
-  			<div class="item-input-content " ><input type="number" class="not-null" id="userNumber" name="number" placeholder="请输入学号/工号" value=""/></div>
+  			<div class="item-input-content " ><input type="number" class="not-null" id="userNumber" name="number" placeholder="请输入学号/工号" value="140602404101"/></div>
   		</div>
   		<div class="item-input">
-  			<div class="item-input-content " ><input type="password" class="not-null" id="password" name="password" placeholder="请输入密码"  value="" /></div>
+  			<div class="item-input-content " ><input type="password" class="not-null" id="password" name="password" placeholder="请输入密码"  value="000000" /></div>
   		</div>
   	</div>
   	<button class="primary-btn long-btn" id="campusAuthentication">登录</button>
@@ -87,7 +87,7 @@ document.getElementById("campusAuthentication").addEventListener("click", functi
 		$.ajax({
 			url:"${base}/my/login",
 			type:"post",
-			data:{"userType":userType,"userNumber":userNumber,"password":password},
+			data:{"userType":userType,"userNumber":userNumber,"password":password,"jumpUrl":"${jumpUrl}"},
 			dataType:"json",
 			beforeSend:function(){
 				timer=setTimeout(function(){
@@ -100,7 +100,8 @@ document.getElementById("campusAuthentication").addEventListener("click", functi
 				clearTimeout(timer);
 				 _$.hidePreloader();
 				if (data.code=="0") {
-					_$.router.load("${base}/"+data.url,true);
+					//_$.router.load(data.url,false);
+					window.location.href=data.url;
 				}else{
 					_$.alert(data.msg, function () {
 				      });

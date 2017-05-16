@@ -250,7 +250,6 @@
 			<version>${jackson.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
 		<!-- jaxb库，该库在classpath下时，spring会自动注册Jaxb2RootElementHttpMessageConverter， 
 			可对@RequestBody、@ResponseBody或者RestTemplate直接进行xml转换 -->
 		<dependency>

@@ -156,6 +156,9 @@ ul li{list-style: none;}
 .leave-record-table tbody tr td:FIRST-CHILD{}
 .leave-record-table tbody tr td:FIRST-CHILD{color:#3399ff; }
 .leave-record-content{margin-top: 1rem;padding-bottom: 3rem;}
+.checking{color: #66cccc !important;}
+.pass{color: #cc0000 !important;}
+.agree{color: #3399ff;}
 
 /* 学生请假*/
 .single-or-more{background-color: white;padding: 1rem 1rem;position: fixed;top:2.2rem;right: 0;width: 100%; }
@@ -194,6 +197,7 @@ ul li{list-style: none;}
 .wait-make-leave-main{width: 60%;padding-left: 0.5rem;font-size: 0.7rem;padding-top: 0.2rem;}
 .wait-make-leave-right{width: 30%;text-align: right;padding-top: 0.5rem;}
 .wait-make-leave-left-bottom{width: 60%;}
+.wait-make-leave-left-bottom-bottom{white-space: nowrap;overflow: auto;}
 .wait-make-leave-left-bottom-top img{height: 0.7rem;}
 .wait-make-leave-left-top{width: 40%;}
 .wait-make-btn{background-color: white;padding: 0.2rem 1rem;border-radius:5px;border:1px solid #cc0000;color:#cc0000;font-size: 0.7rem;}
@@ -209,6 +213,8 @@ ul li{list-style: none;}
 .make-leave-disagree{border: none;background-color:  #cc0000;padding: 0.2rem 0.8rem;border-radius:3px;color:white;font-size: 0.8rem;}
 .make-leave-disagree:ACTIVE {background-color: #830e0e;}
 .call{color:blue;}
+.make-leave-making{border: none;background-color:  #66cccc;padding: 0.2rem 0.8rem;border-radius:3px;color:white;font-size: 0.8rem;}
+.make-leave-making:ACTIVE {background-color: #339999;}
 
 
 

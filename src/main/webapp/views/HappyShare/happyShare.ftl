@@ -70,23 +70,33 @@
 		
 		<div class="recommended-items">
 			<div class="recommended-item row">
+			
 				<div class="col-50">
+				<a href="http://hq.gxufe.cn/hq/myweb/level_2.cdi?typeid0=09&typeid=14" data-no-cache="true">
 					<img alt="" src="${base}/resources/images/happyShare/share_01.png">
 					<div>查电表</div>
+				</a>
 				</div>
+				
 				<div class="col-50">
+				<a href="${base }/toDeveloperPage?title=缴电费" data-no-cache="true">
 					<img alt="" src="${base}/resources/images/happyShare/share_02.png">
 					<div style="background-color: rgba(34,168,253,0.5);">缴电费<span style="float: right;margin-right: 20px;">集成中</span></div>
+					</a>
 				</div>
 			</div>
 			<div class="recommended-item row">
 				<div class="col-50">
+				<a href="http://hqsv.gxufe.edu.cn/" data-no-cache="true">
 					<img alt="" src="${base}/resources/images/happyShare/electricity.png">
 					<div>障碍保修</div>
+					</a>
 				</div>
 				<div class="col-50">
+					<a href="${base }/toDeveloperPage?title=智慧校园快递" data-no-cache="true">
 					<img alt="" src="${base}/resources/images/happyShare/expressage.png">
 					<div>智慧校园快递</div>
+					</a>
 				</div>
 			</div>
 			<div class="recommended-item row">
@@ -94,32 +104,43 @@
 						<a href="happyShare/toPart" data-no-cache="true">
 							<img alt="" src="${base}/resources/images/happyShare/phoneBook.png">
 							<div>通讯录</div>
+							
 						</a>
 					</div>
 				<div class="col-50">
+					<a href="${base }/toDeveloperPage?title=常用表格下载" data-no-cache="true">
 					<img alt="" src="${base}/resources/images/happyShare/share_06.png">
 					<div>常用表格下载</div>
+					</a>
 				</div>
 			</div>
 			<div class="recommended-item row">
 				<div class="col-50">
+					<a href="${base }/toDeveloperPage?title=校园卡充值" data-no-cache="true">
 					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
 					<div style="background-color: rgba(34,168,253,0.5);">校园卡充值<span style="float: right;margin-right: 20px;">集成中</span></div>
+					</a>
 				</div>
 				<div class="col-50">
-					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
+					<a href="${base }/toDeveloperPage?title=精品课程" data-no-cache="true">
+					<img alt="" src="${base}/resources/images/happyShare/share_08.png">
 					<div style="background-color: rgba(34,168,253,0.5);">精品课程<span style="float: right;margin-right: 20px;">集成中</span></div>
+					</a>
 				</div>
 			</div>
 			
 			<div class="recommended-item row">
 			<div class="col-50">
-					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
+				<a href="${base }/toDeveloperPage?title=考研在线  data-no-cache="true">
+					<img alt="" src="${base}/resources/images/happyShare/share_09.png">
 					<div style="background-color: rgba(34,168,253,0.5);">考研在线<span style="float: right;margin-right: 20px;">集成中</span></div>
+				</a>
 				</div>
 				<div class="col-50">
+				<a href="${base }/toDeveloperPage?title=更多分享"  data-no-cache="true">
 					<img alt="" src="${base}/resources/images/happyShare/share_05.png">
 					<div style="background-color: rgba(34,168,253,0.5);">更多分享<span style="float: right;margin-right: 20px;">集成中</span></div>
+				</a>
 				</div>
 			</div>
 		</div>

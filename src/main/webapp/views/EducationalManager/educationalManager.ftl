@@ -45,7 +45,9 @@
 			<li class="manager-item car-service" style="margin-top: 0;">
 			<div>
 				<div class="manager-item-logo">
+					<a href="${base }/toDeveloperPage?title=校车服务" data-no-cache="true">
 					<img alt="" src="${base}/resources/images/EducationalManager/bus-Service.png">
+					</a>
 				</div>
 				<p>校车服务</p>
 				</div>
@@ -53,7 +55,9 @@
 			<li class="manager-item other-service" style="margin-top: 0;">
 				<div>
 					<div class="manager-item-logo">
+						<a href="${base }/toDeveloperPage?title=其他服务" data-no-cache="true">
 						<img alt="" src="${base}/resources/images/EducationalManager/integration.png">
+						</a>
 					</div>
 					<p>其他服务</p>
 				</div>

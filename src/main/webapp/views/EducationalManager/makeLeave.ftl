@@ -22,43 +22,45 @@
   </header>
   	
   <div class="content no-bottom white-bg-color" style="padding: 0.5rem 5%;">
-  	 <div class="wait-make-leave-amount">您有&nbsp;<span class="amount">1</span>&nbsp;条请假单未处理</div>
+  	 <div class="wait-make-leave-amount">您有&nbsp;<span class="amount">${total }</span>&nbsp;条请假单未处理</div>
   	 <div class="leave-record-title" style="width: 5.3rem;font-size: 1rem;">请假单信息</div>
   	 <div class="wait-make-leave-record">
   	 	<ul class="wait-make-leave-items">
+  	 	<#list sysLeaveInfose as sysLeaveInfo>
+  	 		
   	 		<li class="wait-make-leave-item border-bottom">
+  	 			<#if sysLeaveInfo.stateCode==1>
   	 			<div class="wait-make-leave-left"><img class="wait-make-leave-left-single-logo" src="${base }/resources/images/EducationalManager/single.png"></div>
+  	 			<#else>
+  	 			<div class="wait-make-leave-left"><img class="wait-make-leave-left-single-logo" src="${base }/resources/images/EducationalManager/more.png"></div>
+  	 			</#if>
   	 			<div class="wait-make-leave-main">
   	 				<div class="wait-make-leave-left-top">
-  	 					<div class="">吴朝明</div>
-  	 					<div class="">计应1331</div>
+  	 					<div class="">${sysLeaveInfo.realName}</div>
+  	 					<div class="">${sysLeaveInfo.className}</div>
   	 				</div>
   	 				<div class="wait-make-leave-left-bottom">
+  	 				<#if sysLeaveInfo.sex=='男'>
 	  	 				<div class="wait-make-leave-left-bottom-top"><img src="${base }/resources/images/EducationalManager/boy.png"></div>
-	  	 				<div class="wait-make-leave-left-bottom-bottom">2017-05-30</div>
+  	 				<#else>
+	  	 				<div class="wait-make-leave-left-bottom-top"><img src="${base }/resources/images/EducationalManager/girl.png"></div>
+  	 				</#if>
+	  	 				<div class="wait-make-leave-left-bottom-bottom">${sysLeaveInfo.applyDate}</div>
   	 				</div>
   	 			</div>
-  	 			
   	 			<div class="wait-make-leave-right">
-  	 				<a href="toMakeLeaveInfo" style="width: 100%;height: 100%;" data-no-cache="true">
+  	 			<#if sysLeaveInfo.isNew==1>
+  	 				<a href="toMakeLeaveInfo?stateCode=${sysLeaveInfo.stateCode}&id=${sysLeaveInfo.id}" style="width: 100%;height: 100%;" data-no-cache="true">
   	 					<button class="wait-make-btn">未处理</button>
   	 				</a>
+  	 				<#else>
+  	 				<a href="lookLeaveInfo?stateCode=${sysLeaveInfo.stateCode}&id=${sysLeaveInfo.id}" style="width: 100%;height: 100%;" data-no-cache="true">
+  	 					<button class="maked-btn">已处理</button>
+  	 				</a>
+  	 				</#if>
   	 			</div>
   	 		</li>
-  	 		<li class="wait-make-leave-item border-bottom">
-  	 			<div class="wait-make-leave-left"><img class="wait-make-leave-left-more-logo" src="${base }/resources/images/EducationalManager/more.png"></div>
-  	 			<div class="wait-make-leave-main">
-  	 				<div class="wait-make-leave-left-top">
-  	 					<div class="">蒙卓臻</div>
-  	 					<div class="">计应1331</div>
-  	 				</div>
-  	 				<div class="wait-make-leave-left-bottom">
-	  	 				<div class="wait-make-leave-left-bottom-top"><img src="${base }/resources/images/EducationalManager/girl.png"></div>
-	  	 				<div class="wait-make-leave-left-bottom-bottom">2017-05-30</div>
-  	 				</div>
-  	 			</div>
-  	 			<div class="wait-make-leave-right"><button class="maked-btn">已处理</button></div>
-  	 		</li>
+  	 		</#list>
   	 	</ul>
   	 </div>
   </div>

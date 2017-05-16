@@ -10,9 +10,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.gxufe.smarcampus.common.PaginationSupport;
+import com.gxufe.smarcampus.models.SysTeacher;
 import com.gxufe.smarcampus.models.SysUsers;
 import com.gxufe.smarcampus.repository.SysUsersDao;
 import com.gxufe.smarcampus.repository.Impl.SysUsersDaoImpl;
+import com.gxufe.smarcampus.service.BaseService;
 import com.gxufe.smarcampus.service.SysUsersService;
 
 @Service
@@ -37,5 +39,14 @@ public class SysUsersServiceImpl extends BaseServicImpl<SysUsers, Integer> imple
 		}else{
 			return null;
 		}
+	}
+	@Override
+	public SysTeacher findTeacherByStudentNumber(String studentNumber) {
+		List<SysUsers> sysUsersList= sysUsersDao.find("from SysUsers where sysStudent.studentNumber=?",studentNumber);
+		
+		if (sysUsersList.size()>0) {
+			return sysUsersList.get(0).getSysStudent().getSysClass().getSysTeacher();
+		}
+		return null;
 	}
 }

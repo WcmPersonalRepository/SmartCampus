@@ -30,27 +30,27 @@
   			<ul class="baseInfo-items">
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">学号</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">1232338928</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${studentNumber}</div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">姓名</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">吴朝明</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${realName}</div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">性别</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">男</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${sex}</div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">班级</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">计应1331</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${className}</div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">专业</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">计算机在应用技术</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${professional}</div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">学院</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">信息与统计学院</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${collegeName}</div>
   				</li>
   			</ul>
   		</div>
@@ -62,11 +62,11 @@
 	  			<ul class="baseInfo-items">
 	  				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">学生号码</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">18277719844&nbsp;&nbsp;<a href="tel:18277719844" class="call">呼叫</a></div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${studentMobile}&nbsp;&nbsp;<a href="tel:${studentMobile}" class="call">呼叫</a></div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">家长号码</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">13558471819&nbsp;&nbsp;<a href="tel:13558471819" class="call">呼叫</a></div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${familyMobile}&nbsp;&nbsp;<a href="tel:${studentMobile}" class="call">呼叫</a></div>
   				</li>
 	  			</ul>
   			</div>
@@ -76,33 +76,17 @@
 		  			<div class="col-30" style="width: 40%;"	><span class="leave-record-title" style="width: 5.5rem;">多人请假必填</span></div>
   				</div>
   				<ul class="more-leave-required-items">
+  					<#list students as student>
   					<li class="more-leave-required-item border-bottom">
   						<div class="row">
-  							<div class="col-70">姓名：吴朝明</div>
+  							<div class="col-70">姓名：${student.realName }</div>
   						</div>
 						
-						<div class="">学号：120604303128</div>
-						<div class="">班级：计算机应用技术</div>
-						<div class="">联系方式：348573984</div>
+						<div class="">学号：${student.studentNumber }</div>
+						<div class="">班级：${student.className }</div>
+						<div class="">联系方式：${student.mobile }</div>
   					</li>
-  					<li class="more-leave-required-item border-bottom">
-  						<div class="row">
-  							<div class="col-70">姓名：吴朝明</div>
-  						</div>
-						
-						<div class="">学号：120604303128</div>
-						<div class="">班级：计算机应用技术</div>
-						<div class="">联系方式：348573984</div>
-  					</li>
-  					<li class="more-leave-required-item border-bottom">
-  						<div class="row">
-  							<div class="col-70">姓名：吴朝明</div>
-  						</div>
-						
-						<div class="">学号：120604303128</div>
-						<div class="">班级：计算机应用技术</div>
-						<div class="">联系方式：348573984</div>
-  					</li>
+  				</#list>
   				</ul>
   			</div>
   			
@@ -115,7 +99,7 @@
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 25%;">开始时间</div>
 	  				<div class="baseInfo-item-right col-50 row" style="margin-left: 0;width: 75%;line-height: 2rem;">
 	  					<div style="">
-	  						<input type="text" id="startTime" placeholder="请选择开始时间" class="col-70 startTime" style="width: 85%;margin-left: 0;" />
+	  						${startTime}
 							&nbsp;<img alt="" src="${base}/resources/images/EducationalManager/startTime.png" class="col-30" style="width: 0.9rem;position: relative;top:0.1rem;margin-left: 0;">
 						</div>
 					</div>
@@ -124,19 +108,23 @@
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 25%;">结束时间</div>
 	  				<div class="baseInfo-item-right col-50 row" style="margin-left: 0;width: 75%;line-height: 2rem;">
 	  					<div style="">
-	  						<input type="text" id="endTime" placeholder="请选择结束时间" class="col-70 endTime" style="width: 85%;margin-left: 0;" />
+	  						${endTime}
 							&nbsp;<img alt="" src="${base}/resources/images/EducationalManager/endTime.png" class="col-30" style="width: 0.9rem;position: relative;top:0.1rem;margin-left: 0;">
 						</div>
 					</div>
   				</li>
+  				<li class="baseInfo-item row border-bottom">
+  					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">辅导员</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${classTeacher}</div>
+  				</li>
   				<li class="baseInfo-item row border-bottom" style="height: 5rem;">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">请假原因</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;"><textarea placeholder="请填写请假原因100字以内" class="textarea"></textarea></div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;"><textarea placeholder="请填写请假原因100字以内" class="textarea">${leaveReason}</textarea></div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 40%;">家长是否同意</div>
   					<div class="baseInfo-item-right col-50 row" style="margin-left: 0;width: 60%;">
-  						是
+  						${isFamilyAgree}
   					</div>
   				</li>
   			</ul>
@@ -156,200 +144,47 @@ var _$=undefined;
   'use strict';
   $(document).on("pageInit", "#page-student-moreLeaveInfo", function(e, id, page) {
 	  _$=$;
-	  
-	  	$("#makeLeave").click(function(e){
-	  		$.showPreloader();
-	  		setTimeout(function(){
-	  			 $.hidePreloader();
-				  $.router.load("toMakeLeave",true);
-		  	}, 1000);
-	  		  
-		 });
-		 
-		function getDefaults(){
-			var today = new Date();
+	  var statusCode=undefined;
+	  $("#agree").click(function(e){
+			 statusCode=1;
+			 showModel();
+		 }); 
+		 $("#disagree").click(function(e){
+			 statusCode=2;
+			 showModel();
+		}); 
 
-		    var getDays = function(max) {
-		        var days = [];
-		        for(var i=1; i<= (max||31);i++) {
-		            days.push(i < 10 ? "0"+i : i);
-		        }
-		        return days;
-		    };
-
-		    var getDaysByMonthAndYear = function(month, year) {
-		        var int_d = new Date(year, parseInt(month)+1-1, 1);
-		        var d = new Date(int_d - 1);
-		        return getDays(d.getDate());
-		    };
-
-		    var formatNumber = function (n) {
-		        return n < 10 ? "0" + n : n;
-		    };
-
-		    var initMonthes = ('01 02 03 04 05 06 07 08 09 10 11 12').split(' ');
-
-		    var initYears = (function () {
-		        var arr = [];
-		        /* for (var i = 1950; i <= 2030; i++) { arr.push(i); } */
-		        arr.push(today.getFullYear());
-		        arr.push(today.getFullYear()+1);
-		        return arr;
-		    })();
-			var defaults = {
-
-			        rotateEffect: false,  //为了性能
-
-			        value: [today.getFullYear(), formatNumber(today.getMonth()+1), formatNumber(today.getDate()), today.getHours(), formatNumber(today.getMinutes())],
-
-			        onChange: function (picker, values, displayValues) {
-			            var days = getDaysByMonthAndYear(picker.cols[1].value, picker.cols[0].value);
-			            var currentValue = picker.cols[2].value;
-			            var currentDateTime=new Date(values[0]+"-"+values[1]+"-"+values[2]+" "+values[3]+":"+values[4]);
-			            if(currentValue > days.length) 
-				            currentValue = days.length;
-			            picker.cols[2].setValue(currentValue);
-			           /*  if (currentDateTime.getMonth()+1 <today.getMonth()+1) {
-			            	picker.cols[0].setValue(today.getFullYear());
-			            	picker.cols[1].setValue(today.getMonth()+1<10?"0"+(today.getMonth()+1):today.getMonth()+1);
-			            	
-						}
-						if (currentDateTime.getDate() <today.getDate()) {
-				            picker.cols[2].setValue(today.getDate()<10?"0"+today.getDate():today.getDate());
-						}
-						if (currentDateTime.getHours() <today.getHours()) {
-							
-			            	picker.cols[4].setValue(today.getHours()<10?"0"+today.getHours():today.getHours());
-						}
-						if (currentDateTime.getMinutes()<today.getMinutes()) {
-							
-			            	picker.cols[6].setValue(today.getMinutes()<10?"0"+today.getMinutes():today.getMinutes());
-						} */
-			        },
-			        toolbarTemplate: '<header class="bar bar-nav">\
-				        <button class="button button-link pull-left close-picker">\
-				      关闭\
-				      </button>\
-				      <button class="button button-link pull-right close-picker">\
-				      确定\
-				      </button>\
-				      <h1 class="title">请选择</h1>\
-				      </header>',
-			        formatValue: function (p, values, displayValues) {
-			            return displayValues[0] + '-' + values[1] + '-' + values[2] + ' ' + values[3] + ':' + values[4]+' '+values[5];
-			        },
-
-			        cols: [
-			            // Years
-			        {
-			            values: initYears
-			        },
-			        // Months
-			        {
-			            values: initMonthes
-			        },
-			        // Days
-			        {
-			            values: getDays()
-			        },
-
-			        // Space divider
-			        {
-			            divider: true,
-			            content: '  '
-			        },
-			        // Hours
-			        {
-			            values: (function () {
-			                var arr = [];
-			                for (var i = 0; i <= 23; i++) { arr.push(i < 10 ? "0"+i : i); }
-			                return arr;
-			            })(),
-			        },
-			        // Divider
-			        {
-			            divider: true,
-			            content: ':'
-			        },
-			        // Minutes
-			        {
-			            values: (function () {
-			                var arr = [];
-			                for (var i = 0; i <= 59; i++) { arr.push(i < 10 ? '0' + i : i); }
-			                return arr;
-			            })(),
-			        },
-			        {
-			            divider: true,
-			            content: '  '
-			        },
-			        {
-			            values: ['第一节','第二节','第三节','第四节','第五节','第六节','第七节','第八节','第九节','第十节']
-			        },
-			        ]
-			    };
-
-		    return defaults;
-		}
-		
-		$.fn.smartCampusDatetimePicker = function(params) {
-	        return this.each(function() {
-	            if(!this) return;
-	            var p = $.extend(getDefaults(), params);
-	            $(this).picker(p);
-	            if (params.value) $(this).val(p.formatValue(p, p.value, p.value));
-	        });
-	    };
-
-	    var date=new Date();
-	    var year=date.getFullYear();
-	    var month=date.getMonth()+1?"0"+(date.getMonth()+1):date.getMonth()+1;
-	    var day=date.getDate()<10?"0"+date.getDate():date.getDate();
-		$(".startTime").smartCampusDatetimePicker({
-		    value: [year, month, day, '08', '00','第一节']
-		 });
-		$(".endTime").smartCampusDatetimePicker({
-		    value: [year, month, day, '18', '00','第七节']
-		 });
-		
-		 $(".isAgree").picker({
-		      toolbarTemplate: '<header class="bar bar-nav">\
-		        <button class="button button-link pull-left close-picker">\
-		      关闭\
-		      </button>\
-		      <button class="button button-link pull-right close-picker">\
-		      确定\
-		      </button>\
-		      <h1 class="title">请选择</h1>\
-		      </header>',
-		      value:['是'],
-		      cols: [
-		        {
-		          
-		          values: ['是', '否'],
-		        },
-		      ]
-		    });
-
-		//移除请假人
-		 $(".remove").each(function(){
-		 	$(this).click(function(){
-			 	var item=$(this).parent().parent();
-		 		item.addClass("animated fadeOutLeft");
-		 		setTimeout(function(){
-		 			item.remove();
-			 	}, 500);
-		 	});
-		 });
+		 $("#makeLeave").click(function(e){
+			 var approverAdvice=$("#approverAdvice").val();
+			//提交
+			var timer=undefined;
+			$.ajax({
+				url:"${base}/educationalManager/onlineLeave/makeLeave",
+				type:"post",
+				dataType:"json",
+				data:{"id":"${id}","statusCode":statusCode,"approverAdvice":approverAdvice},
+				beforeSend:function(){
+					_$.showPreloader();
+					timer=setTimeout(function(){
+						_$.hidePreloader();
+						_$.alert("网络连接超时", function () {
+					      });
+						}, 10*1000);
+				},
+				success:function(data){
+					clearTimeout(timer);
+					 _$.hidePreloader();
+					 if (data.code==0) {
+						 $.router.load("${base}/educationalManager/onlineLeave",true);
+					 }else{
+						 $.alert(data.msg, function () {
+					     });
+				     }
+				},
+			});
+		}); 
 	  });
 
-  		//提交请假单
-	$("#studentMoreLeave").click(function(){
-		$.router.load("${base}/educationalManager/onlineLeave",true);
-	});
-	$("#studentSingleLeave").click(function(){
-		$.router.load("${base}/educationalManager/onlineLeave",true);
-	});
 }(Zepto);
 
 

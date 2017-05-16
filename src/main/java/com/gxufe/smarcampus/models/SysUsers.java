@@ -107,7 +107,7 @@ public class SysUsers implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "STUDENT_ID")
 	public SysStudent getSysStudent() {
 		return this.sysStudent;
@@ -117,7 +117,7 @@ public class SysUsers implements java.io.Serializable {
 		this.sysStudent = sysStudent;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "teacher_id")
 	public SysTeacher getSysTeacher() {
 		return this.sysTeacher;

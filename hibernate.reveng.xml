@@ -20,4 +20,9 @@
 		</primary-key>
 	</table>
 	<table name="sys_users_roles" catalog="smartcampus"></table>
+<table name="sys_leave_info" catalog="smartcampus">
+	<primary-key>
+		<generator class="identity"></generator>
+	</primary-key>
+</table>
 </hibernate-reverse-engineering>

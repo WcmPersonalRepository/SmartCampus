@@ -1,5 +1,6 @@
 package com.gxufe.smarcampus.controllers;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gxufe.smarcampus.common.util.SpringSecurityUtils;
 import com.gxufe.smarcampus.models.SysCampus;
@@ -79,6 +81,24 @@ public class OtherController {
 		
 		model.addAttribute("msg","用户名或密码不正确");
 		return "login";
+	}
+	
+	/**
+	 * 跳转开发页面
+	 * 
+	 * */
+	@RequestMapping(value="toDeveloperPage",method=RequestMethod.GET)
+	public String toDeveloperPage(HttpServletRequest request , Model model){
+		String title="集成中";
+		try {
+			title = new String(request.getParameter("title").getBytes("ISO-8859-1"),"utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("title",title);
+		return "developerPage";
 	}
 	
 }

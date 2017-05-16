@@ -85,6 +85,24 @@
 	     <property name="defaultEncoding" value="UTF-8"></property>
 	</bean>
 	
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/html;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
 	<!-- SessionTimeout -->
 	<mvc:interceptors>
 		
@@ -95,6 +113,7 @@
 				<property name="excludedUrls">
 					<list>
 						<value>/my/baseInfo</value>
+						<value>/educationalManager/onlineLeave</value>
 					</list>
 				</property>
 			</bean>

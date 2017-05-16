@@ -257,6 +257,12 @@ public class myContrller {
 				List<SysUsers> sysUserList=sysUsersService.findObjectByHQL("from SysUsers where sysTeacher.id=?",Integer.valueOf(id));
 				sysRole.setSysUsers(sysUserList.get(0));
 				sysRolesService.saveOrUpdate(sysRole);
+				String positionName=sysTeacher.getPositionName();
+				if (positionName.indexOf("辅导员")>=0) {
+					SysRoles sysRole1=new SysRoles();
+					sysRole.setRoleName("ROLL_LEADER_MAKE_LEAVE");
+					sysRolesService.saveOrUpdate(sysRole1);
+				}
 				map.put("code", "0");
 				map.put("msg", "恭喜您认证成功");
 				json=JsonUtils.objectToJson(map);
@@ -296,7 +302,8 @@ public class myContrller {
 	 * */
 	@RequestMapping("toLogin")
 	public String toLogin(HttpServletRequest request,Model model){
-		
+		String jumpUrl=request.getParameter("jumpUrl");
+		model.addAttribute("jumpUrl", jumpUrl);
 		return "My/login";
 	}
 	
@@ -310,6 +317,7 @@ public class myContrller {
 		String userType=request.getParameter("userType");
 		String userNumber=request.getParameter("userNumber");
 		String password=request.getParameter("password");
+		String jumpUrl=request.getParameter("jumpUrl");
 		String json="";
 		Map<String, String> map=new HashMap<String,String>();
 		if ("教师".equals(userType)) {
@@ -328,7 +336,11 @@ public class myContrller {
 					
 					map.put("code", "0");
 					map.put("msg", "登录成功");
-					map.put("url", "my/?itemNum=3");
+					if (!(null==jumpUrl||"".equals(jumpUrl))) {
+						map.put("url", jumpUrl);
+					}else{
+						map.put("url", "/SmartCampus/my/?itemNum=3");
+					}
 					json=JsonUtils.objectToJson(map);
 					return json;
 				}else{
@@ -358,11 +370,17 @@ public class myContrller {
 					userInfo.setSysProfessional(sysUser.getSysStudent().getSysClass().getSysProfessional());
 					userInfo.setSysCollege(sysUser.getSysStudent().getSysClass().getSysProfessional().getSysCollege());
 					userInfo.setSysCampus(sysUser.getSysStudent().getSysClass().getSysProfessional().getSysCollege().getSysCampus());
+					/*sysTeacherService.f*/
+					userInfo.setSysTeacher(sysUser.getSysStudent().getSysClass().getSysTeacher());
 					userInfo.setUserType("2");
 					request.getSession().setAttribute("sys_user_info", userInfo);
 					map.put("code", "0");
 					map.put("msg", "登录成功");
-					map.put("url", "my/?itemNum=3");
+					if (!(null==jumpUrl||"".equals(jumpUrl))) {
+						map.put("url", jumpUrl);
+					}else{
+						map.put("url", "/SmartCampus/my/?itemNum=3");
+					}
 					json=JsonUtils.objectToJson(map);
 					return json;
 				}else{
@@ -405,6 +423,7 @@ public class myContrller {
 			String intoSchoolYear=sdf.format(userInfo.getSysStudent().getIntoSchoolYear());
 			model.addAttribute("intoSchoolYear", intoSchoolYear);
 			model.addAttribute("collegeName", userInfo.getSysCollege().getCollegeName());
+			
 		}
 		model.addAttribute("userType", userInfo.getUserType());
 		return "My/baseInfo";

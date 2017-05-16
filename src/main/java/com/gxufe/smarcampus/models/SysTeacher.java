@@ -35,7 +35,6 @@ public class SysTeacher implements java.io.Serializable {
 	private String positionName;
 	private String mobile;
 	private Set<SysUsers> sysUserses = new HashSet<SysUsers>(0);
-	private Set<SysLeaveInfo> sysLeaveInfos = new HashSet<SysLeaveInfo>(0);
 
 	// Constructors
 
@@ -60,7 +59,6 @@ public class SysTeacher implements java.io.Serializable {
 		this.positionName = positionName;
 		this.mobile = mobile;
 		this.sysUserses = sysUserses;
-		this.sysLeaveInfos = sysLeaveInfos;
 	}
 
 	// Property accessors
@@ -175,13 +173,5 @@ public class SysTeacher implements java.io.Serializable {
 		this.sysUserses = sysUserses;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "sysTeacher")
-	public Set<SysLeaveInfo> getSysLeaveInfos() {
-		return this.sysLeaveInfos;
-	}
-
-	public void setSysLeaveInfos(Set<SysLeaveInfo> sysLeaveInfos) {
-		this.sysLeaveInfos = sysLeaveInfos;
-	}
 
 }

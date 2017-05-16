@@ -57,6 +57,7 @@
 	     </div>
 	     </a>
 	     
+	     <a href="${base }/toDeveloperPage?title=我的收藏" data-no-cache="true">
 	     <div class="row options-item line_bottom">
 	     	<div class="col-10">
 	     		<img alt="" src="${base }/resources/images/my/my-collection.png">
@@ -66,6 +67,9 @@
 	     		<span class="icon icon-right"></span>
 	     	</div>
 	     </div>
+	     </a>
+	     
+	     <a href="${base }/toDeveloperPage?title=我的下载" data-no-cache="true">
 	     <div class="row options-item line_bottom">
 	     	<div class="col-10">
 	     		<img alt="" src="${base }/resources/images/my/my-download.png">
@@ -75,6 +79,9 @@
 	     		<span class="icon icon-right"></span>
 	     	</div>
 	     </div>
+	     </a>
+	     
+	     <a href="${base }/toDeveloperPage?title=播放记录" data-no-cache="true">
 	     <div class="row options-item line_bottom">
 	     	<div class="col-10">
 	     		<img alt="" src="${base }/resources/images/my/play-record.png">
@@ -84,6 +91,7 @@
 	     		<span class="icon icon-right"></span>
 	     	</div>
 	     </div>
+	     </a>
 	     
 	     <a href="toSetting" data-no-cache="true">
 	     <div class="row options-item">

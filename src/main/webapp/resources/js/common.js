@@ -31,6 +31,16 @@ function checkInputEmpty($){
     return flag;
 }
 
+//校验手机号码
+function checkMonile(mobile){
+	var reg = /^1[0-9]{10}$/;
+	if (!reg.test(mobile)) {
+		return false;
+	}else{
+		return true;
+	}
+}
+
 //元素水平居住.element-horizontal-center
 elementHorizontalCenter();
 function elementHorizontalCenter(){

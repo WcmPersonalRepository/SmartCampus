@@ -55,7 +55,13 @@ public class SessionTimeoutInterceptor extends HandlerInterceptorAdapter {
 							response.sendRedirect("/SmartCampus/my/toLogin");
 						}else{
 							//response.sendRedirect(WeiXinConstants.REDIRECT_URI);
-							response.sendRedirect("/SmartCampus/my/toLogin");
+							String jumpUrl=request.getRequestURI();
+							StringBuffer redirectUrl=new StringBuffer();
+							redirectUrl.append("/SmartCampus/my/toLogin");
+							if (!(null==jumpUrl||"".equals(jumpUrl))) {
+								redirectUrl.append("?jumpUrl=").append(jumpUrl);
+							}
+							response.sendRedirect(redirectUrl.toString());
 						}
 						return false;
 					} else {
