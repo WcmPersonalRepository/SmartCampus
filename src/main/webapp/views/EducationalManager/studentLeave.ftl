@@ -66,7 +66,7 @@
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">班级</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${className }计应1331</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${className }</div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">专业</div>
@@ -152,7 +152,7 @@
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">班级</div>
-  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${className }计应1331</div>
+  					<div class="baseInfo-item-right col-50" style="margin-left: 0;width: 70%;">${className }</div>
   				</li>
   				<li class="baseInfo-item row border-bottom">
   					<div class="baseInfo-item-left col-50" style="margin-left: 0;width: 30%;">专业</div>
